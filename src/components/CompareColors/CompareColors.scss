@@ -1,0 +1,24 @@
+.compare-colors {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  text-align: center;
+
+  .round-group {
+    margin: 2rem;
+    display: flex;
+    // width: 100%;
+    justify-content: center;
+
+    .picked,
+    .target {
+      margin: 0 1rem;
+      width: 20vw;
+      height: 10vw;
+    }
+    button {
+      display: block;
+      width: 100%;
+    }
+  }
+}

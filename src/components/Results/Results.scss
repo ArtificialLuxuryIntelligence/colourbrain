@@ -1,0 +1,24 @@
+.results {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center ;
+  text-align: center;
+  ul {
+    padding: 0;
+  }
+  .round-group {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+
+    .picked,
+    .target {
+      margin: 0 1rem;
+      width: 20vw;
+      height: 10vw;
+    }
+    h4 {
+      width: 10vw;
+    }
+  }
+}

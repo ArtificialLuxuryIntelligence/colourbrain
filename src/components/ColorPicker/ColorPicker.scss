@@ -1,0 +1,19 @@
+.color-picker {
+  position: relative;
+  // width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .picked {
+    width: 100%;
+    height: 100%;
+  }
+  .react-colorful {
+    width: 30vw;
+    height: 30vw;
+    // position: absolute;
+  }
+}
