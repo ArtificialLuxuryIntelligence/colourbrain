@@ -3,7 +3,7 @@ import './Button.scss';
 
 export default function Button({ label, handleClick }) {
   return (
-    <button className="button" onClick={handleClick}>
+    <button className="button" onClick={handleClick} value={label}>
       {label}
     </button>
   );

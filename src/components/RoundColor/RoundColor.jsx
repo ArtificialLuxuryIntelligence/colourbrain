@@ -2,7 +2,7 @@ import React from 'react';
 import './RoundColor.scss';
 
 export default function RoundColor({ color }) {
-  let { r, g, b, a } = color;
+  let { r, g, b } = color;
 
   return (
     <div

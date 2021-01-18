@@ -2,6 +2,12 @@
   // width: 100vw;
   // min-height: 90vh;
   height: 90vh;
+  .back-button-container {
+    z-index: 4;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .new-game {

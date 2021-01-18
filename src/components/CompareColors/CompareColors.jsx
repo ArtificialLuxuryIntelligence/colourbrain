@@ -5,12 +5,12 @@ import Button from './../Button/Button';
 export default function CompareColors({
   round,
   totalRounds,
-  roundColors,
+  targetColor,
   pickedColor,
   handleNextRound,
   handleShowResults,
 }) {
-  const { r, g, b, a } = roundColors[round - 1];
+  const { r, g, b, a } = targetColor;
   const { r: rp, g: gp, b: bp, a: ap } = pickedColor;
 
   return (

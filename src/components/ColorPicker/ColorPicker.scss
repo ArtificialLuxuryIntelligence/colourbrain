@@ -1,7 +1,7 @@
 .color-picker {
   position: relative;
   // width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,5 +15,51 @@
     width: 30vw;
     height: 30vw;
     // position: absolute;
+  }
+
+  .complement-color {
+    // border: 1px solid black;
+    width: 50px;
+    height: 50px;
+  }
+  .triad-color {
+    // border: 1px solid black;
+    width: 50px;
+    height: 50px;
+  }
+  .tetra-color {
+    // border: 1px solid black;
+    width: 50px;
+    height: 50px;
+  }
+  .complement-color,
+  .triad-color,
+  .tetra-color {
+    border-radius: 50%;
+  }
+}
+
+.gameMode-Hue,
+.gameMode-CompHue,
+.gameMode-TriadHue,
+.gameMode-TetradHue {
+  .react-colorful {
+    .react-colorful__saturation {
+      display: none;
+    }
+    .react-colorful__last-control {
+      border-radius: 8px;
+    }
+    // width: 20px;
+  }
+}
+.gameMode-SatLum,
+.gameMode-CompSL,
+.gameMode-TriadSL,
+.gameMode-TetradSL {
+  .react-colorful {
+    .react-colorful__hue {
+      display: none;
+    }
   }
 }
