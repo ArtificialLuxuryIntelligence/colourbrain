@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Checkbox({ label, handleClick, checked }) {
+export default function Checkbox({ label, handleChange, checked }) {
   return (
     <>
-      <label>
+      <label style={{ display: 'block' }}>
         {label}
-        <input type="checkbox" onClick={handleClick} checked={checked} />
+        <input type="checkbox" onChange={handleChange} checked={checked} />
       </label>{' '}
     </>
   );

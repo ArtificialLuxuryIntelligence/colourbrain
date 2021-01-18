@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './ColorPicker.scss';
 
 import { RgbColorPicker, HslColorPicker } from 'react-colorful';
@@ -12,41 +11,45 @@ export default function ColorPicker({
   gameMode,
   roundColors,
 }) {
-  const { targetColor, complement, triad, tetrad } = roundColors;
-  const { r, g, b, a } = pickedColor;
-  const { r: rt, g: gt, b: bt } = targetColor;
+  const { complement, triad, tetrad } = roundColors;
+  const { r, g, b } = pickedColor;
 
   return (
     <div
       className={`color-picker gameMode-${gameMode}`}
       style={{ backgroundColor: `rgb(${r},${g},${b})` }}
     >
-      {(gameMode === 'CompHue' ||
-        gameMode === 'CompSL' ||
-        gameMode === 'CompHSL') && (
-        <div
-          className="complement-color"
-          style={{ backgroundColor: `${complement}` }}
-        ></div>
-      )}
-      {(gameMode === 'TriadHue' ||
-        gameMode === 'TriadSL' ||
-        gameMode === 'TriadHSL') &&
-        triad.map((triad) => (
+      <div className="reference-colors">
+        {(gameMode === 'CompHue' ||
+          gameMode === 'CompSL' ||
+          gameMode === 'CompHSL') && (
           <div
-            className="triad-color"
-            style={{ backgroundColor: `${triad}` }}
+            key={complement}
+            className="complement-color"
+            style={{ backgroundColor: `${complement}` }}
           ></div>
-        ))}
-      {(gameMode === 'TetradHue' ||
-        gameMode === 'TetradSL' ||
-        gameMode === 'TetradHSL') &&
-        tetrad.map((tetra) => (
-          <div
-            className="tetra-color"
-            style={{ backgroundColor: `${tetra}` }}
-          ></div>
-        ))}
+        )}
+        {(gameMode === 'TriadHue' ||
+          gameMode === 'TriadSL' ||
+          gameMode === 'TriadHSL') &&
+          triad.map((triad) => (
+            <div
+              key={triad}
+              className="triad-color"
+              style={{ backgroundColor: `${triad}` }}
+            ></div>
+          ))}
+        {(gameMode === 'TetradHue' ||
+          gameMode === 'TetradSL' ||
+          gameMode === 'TetradHSL') &&
+          tetrad.map((tetra) => (
+            <div
+              key={tetra}
+              className="tetra-color"
+              style={{ backgroundColor: `${tetra}` }}
+            ></div>
+          ))}
+      </div>
 
       <RgbColorPicker color={pickedColor} onChange={setPickedColor} />
       {/* <HslColorPicker color={pickedColor} onChange={setPickedColor} /> */}

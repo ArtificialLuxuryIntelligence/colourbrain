@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './Results.scss';
-import deltaE from './../../tools/deltaE';
-import colorDifference from './../../tools/colorDifference';
+import { colorDifference } from '../../tools/colorTools';
 
 import Button from '../Button/Button';
 
@@ -10,6 +9,7 @@ export default function Results({
   handleRestartGame,
   handleBackToStart,
   handleUpdateHighscores,
+  gameMode,
 }) {
   const totalScore = calculateTotalScore(results);
   useEffect(() => {
@@ -18,14 +18,16 @@ export default function Results({
 
   return (
     <div className="results">
-      <h3>Score : {totalScore} %</h3>
+      <h3>
+        {gameMode} - Score : {totalScore} %
+      </h3>
       <Button label="Restart" handleClick={handleRestartGame} />
       <Button label="Home" handleClick={handleBackToStart} />
 
       <ul>
         {results.map((round, idx) => {
-          const { r, g, b, a } = round.picked;
-          const { r: rp, g: gp, b: bp, a: ap } = round.target;
+          const { r, g, b } = round.picked;
+          const { r: rp, g: gp, b: bp } = round.target;
           const score = Math.round(calculateScore(round.picked, round.target));
 
           return (
@@ -51,8 +53,8 @@ export default function Results({
 const calculateScore = (c1, c2) => {
   let diff = colorDifference(c1, c2); // 0 (same) - 100 (opposite)
   let temp = 100 - diff * 2;
-  let score = temp >= 0 ? temp :0
-  return score
+  let score = temp >= 0 ? temp : 0;
+  return score;
 };
 const calculateTotalScore = (results) => {
   let total = results.reduce((acc, round) => {

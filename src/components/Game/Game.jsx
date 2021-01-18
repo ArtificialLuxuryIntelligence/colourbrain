@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import tinycolor from 'tinycolor2';
-
+import {
+  randomRGBA,
+  randomRGBA_matchH,
+  randomRGBA_matchSL,
+  colorCombos,
+} from './../../tools/colorTools';
 import './Game.scss';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import RoundColor from '../RoundColor/RoundColor';
@@ -11,8 +15,8 @@ import CompareColors from '../CompareColors/CompareColors';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
-const totalRounds = 2;
-const flashTime = 1800;
+const totalRounds = 5;
+const flashTime = 2800;
 
 export default function Game() {
   const [roundColors, setRoundColors] = useState(generateRounds(totalRounds));
@@ -48,46 +52,46 @@ export default function Game() {
   // const loaded = useRef(false);
   const timer = useRef();
 
+  // Update player colour options when moving to next round (i.e. lock in Hue or Sat/Lum dpending on game mode)
   useEffect(() => {
     if (gameActive) {
+      const targetColor = roundColors[round - 1].targetColor;
+      switch (gameMode) {
+        case 'Hue':
+          setPickedColor(randomRGBA_matchSL(targetColor));
+          break;
+        case 'CompHue':
+          setPickedColor(randomRGBA_matchSL(targetColor));
+          break;
+        case 'TriadHue':
+          setPickedColor(randomRGBA_matchSL(targetColor));
+          break;
+        case 'TetradHue':
+          setPickedColor(randomRGBA_matchSL(targetColor));
+          break;
+        case 'SatLum':
+          setPickedColor(randomRGBA_matchH(targetColor));
+          break;
+        case 'CompSL':
+          setPickedColor(randomRGBA_matchH(targetColor));
+          break;
+        case 'TriadSL':
+          setPickedColor(randomRGBA_matchH(targetColor));
+          break;
+        case 'TetradSL':
+          setPickedColor(randomRGBA_matchH(targetColor));
+          break;
+        // case 'HSL':
+        //   setPickedColor(randomRGBA([20, 235]));
+        //   break;
+        default:
+          setPickedColor(randomRGBA([20, 235]));
+      }
       if (preview) {
         setRoundStage('preview');
-        const targetColor = roundColors[round - 1].targetColor;
-        switch (gameMode) {
-          case 'Hue':
-            setPickedColor(randomRGBA_matchSL(targetColor));
-            break;
-          case 'CompHue':
-            setPickedColor(randomRGBA_matchSL(targetColor));
-            break;
-          case 'TriadHue':
-            setPickedColor(randomRGBA_matchSL(targetColor));
-            break;
-          case 'TetradHue':
-            setPickedColor(randomRGBA_matchSL(targetColor));
-            break;
-          case 'SatLum':
-            setPickedColor(randomRGBA_matchH(targetColor));
-            break;
-          case 'CompSL':
-            setPickedColor(randomRGBA_matchH(targetColor));
-            break;
-          case 'TriadSL':
-            setPickedColor(randomRGBA_matchH(targetColor));
-            break;
-          case 'TetradSL':
-            setPickedColor(randomRGBA_matchH(targetColor));
-            break;
-          // case 'HSL':
-          //   setPickedColor(randomRGBA([20, 235]));
-          //   break;
-          default:
-            setPickedColor(randomRGBA([20, 235]));
-        }
         timer.current = setTimeout(() => {
           setRoundStage('pick');
         }, flashTime);
-
         return () => clearTimeout(timer.current);
       } else {
         setRoundStage('pick');
@@ -95,16 +99,7 @@ export default function Game() {
     }
   }, [round]);
 
-  // useEffect(() => {
-  //   const targetColor = roundColors[round - 1].targetColor;
-  //   const { complement, triad, tetrad } = colorCombos(
-  //     roundColors[round - 1].targetColor
-  //   );
-  //   setComplement(complement);
-  //   setTriad(triad);
-  //   setTetrad(tetrad);
-  // }, [round]);
-
+  // Get highscores from local storage
   useEffect(() => {
     const data = localStorage.getItem('highscores');
     if (data) {
@@ -112,11 +107,14 @@ export default function Game() {
     }
     return () => {};
   }, []);
+
+  // Set highscores to local storage
   useEffect(() => {
     localStorage.setItem('highscores', JSON.stringify(highscores));
     return () => {};
   }, [highscores]);
 
+  // Event handlers
   const handlePickColor = (e) => {
     // console.log(pickedColor);
     // console.log(roundColors[round - 1]);
@@ -216,21 +214,20 @@ export default function Game() {
           {/* custom game with checkbox to choose which modes to include */}
           <Checkbox
             label={'Colour preview *'}
-            handleClick={handleToggleUserPrefPreview}
+            handleChange={handleToggleUserPrefPreview}
             checked={userPreferencePreview}
           />
-          {/* checkbox to turn preview off */}
 
           <div>
             <p>Match the colour shown at the start of each round.</p>
             <p>Use the Complementary/Triad/Tetrad colours as guides</p>
             <p>
-              * Only applies to modes where other colours are present (i.e. not
-              Hue, SatLum, HSL)
+              * Lets you preview the target colour. Only applies to modes where
+              other colours are present (i.e. not Hue, SatLum, HSL)
             </p>
           </div>
           <div>
-            <h2>Highscores</h2>
+            <h2>My highscores</h2>
             {Object.entries(highscores).map((s) => {
               return (
                 <li>
@@ -265,6 +262,7 @@ export default function Game() {
       {roundStage === 'compare' && (
         <CompareColors
           round={round}
+          roundColors={roundColors}
           totalRounds={totalRounds}
           targetColor={roundColors[round - 1].targetColor}
           pickedColor={pickedColor}
@@ -276,6 +274,7 @@ export default function Game() {
       {roundStage === 'results' && (
         <Results
           results={results}
+          gameMode={gameMode}
           handleRestartGame={handleRestartGame}
           handleBackToStart={handleBackToStart}
           handleUpdateHighscores={handleUpdateHighscores}
@@ -284,41 +283,6 @@ export default function Game() {
     </div>
   );
 }
-
-// separate into own files?
-const randomRGBA = (range = [0, 255], a = 1) => {
-  return {
-    r: randomInRange(range),
-    g: randomInRange(range),
-    b: randomInRange(range),
-    a,
-  };
-};
-
-// returns random rgba object with same saturation and luminosity as input color (different hue)
-const randomRGBA_matchSL = (color) => {
-  let hsl = tinycolor.fromRatio(color).toHsl();
-  let hue = Math.random();
-  hsl.h = hue;
-  let rgb = tinycolor(hsl).toRgb();
-  return rgb;
-};
-
-// returns random rgba object with different saturation and luminosity as input color (same hue)
-const randomRGBA_matchH = (color) => {
-  let hsl = tinycolor.fromRatio(color).toHsl();
-  let sat = Math.random();
-  let lum = Math.random();
-  hsl.s = sat;
-  hsl.l = lum;
-  let rgb = tinycolor(hsl).toRgb();
-  return rgb;
-};
-
-const randomInRange = (range = [0, 1]) => {
-  let [min, max] = range;
-  return Math.random() * (max - min) + min;
-};
 
 const generateRounds = (rounds) => {
   let res = [];
@@ -332,20 +296,4 @@ const generateRounds = (rounds) => {
     r++;
   }
   return res;
-};
-
-const colorCombos = (color) => {
-  const complement = tinycolor(color).complement().toRgbString();
-  let triad = tinycolor(color)
-    .triad()
-    .map((c) => c.toRgbString());
-  let tetrad = tinycolor(color)
-    .tetrad()
-    .map((c) => c.toRgbString());
-
-  //remove original colors
-  triad.shift();
-  tetrad.shift();
-  console.log({ triad, tetrad });
-  return { complement, triad, tetrad };
 };

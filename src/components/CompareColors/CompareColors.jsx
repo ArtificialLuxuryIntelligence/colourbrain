@@ -1,5 +1,6 @@
 import React from 'react';
-import "./CompareColors.scss"
+import tinycolor from 'tinycolor2';
+import './CompareColors.scss';
 import Button from './../Button/Button';
 
 export default function CompareColors({
@@ -7,22 +8,23 @@ export default function CompareColors({
   totalRounds,
   targetColor,
   pickedColor,
+  roundColors,
   handleNextRound,
   handleShowResults,
 }) {
-  const { r, g, b, a } = targetColor;
-  const { r: rp, g: gp, b: bp, a: ap } = pickedColor;
-
+  const targetCString = tinycolor.fromRatio(targetColor).toRgbString();
+  const pickedCString = tinycolor.fromRatio(pickedColor).toRgbString();
+  
   return (
     <div className="compare-colors">
       <div className="round-group">
         <div
           className="picked"
-          style={{ backgroundColor: `rgb(${r},${g},${b})` }}
+          style={{ backgroundColor: `${pickedCString}` }}
         ></div>
         <div
           className="target"
-          style={{ backgroundColor: `rgb(${rp},${gp},${bp})` }}
+          style={{ backgroundColor: `${targetCString}` }}
         ></div>
       </div>
       {round === totalRounds ? (
