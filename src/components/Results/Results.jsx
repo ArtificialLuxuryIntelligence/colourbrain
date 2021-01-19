@@ -6,10 +6,11 @@ import Button from '../Button/Button';
 
 export default function Results({
   results,
+  gameMode,
+  roundColorNames,
   handleRestartGame,
   handleBackToStart,
   handleUpdateHighscores,
-  gameMode,
 }) {
   const totalScore = calculateTotalScore(results);
   useEffect(() => {
@@ -32,15 +33,17 @@ export default function Results({
 
           return (
             <li key={idx} className="round-group">
-              <h4>Round {idx + 1}</h4>
-              <div
-                className="picked"
-                style={{ backgroundColor: `rgb(${r},${g},${b})` }}
-              ></div>
+              {/* <h4>Round {idx + 1}</h4> */}
+              <h4>{roundColorNames[idx]}</h4>
               <div
                 className="target"
                 style={{ backgroundColor: `rgb(${rp},${gp},${bp})` }}
               ></div>
+              <div
+                className="picked"
+                style={{ backgroundColor: `rgb(${r},${g},${b})` }}
+              ></div>
+
               <h4>{score} %</h4>
             </li>
           );

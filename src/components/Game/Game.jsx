@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import tinycolor from 'tinycolor2';
 import {
   randomRGBA,
   randomRGBA_matchH,
@@ -15,11 +16,12 @@ import CompareColors from '../CompareColors/CompareColors';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
-const totalRounds = 5;
+const totalRounds = 3;
 const flashTime = 2800;
 
 export default function Game() {
   const [roundColors, setRoundColors] = useState(generateRounds(totalRounds));
+  const [roundColorNames, setRoundColorNames] = useState([]);
   const [results, setResults] = useState([]);
   const [pickedColor, setPickedColor] = useState(randomRGBA([20, 235]));
   const [round, setRound] = useState(totalRounds); // round number reset at start game (this is not set to 1 to ensure useeffect is triggered)
@@ -44,13 +46,8 @@ export default function Game() {
     TetradSL: 0,
     TetradHSL: 0,
   });
-
-  // const [complement, setComplement] = useState(null);
-  // const [triad, setTriad] = useState(null);
-  // const [tetrad, setTetrad] = useState(null);
-
-  // const loaded = useRef(false);
   const timer = useRef();
+  const isLoaded = useRef(false);
 
   // Update player colour options when moving to next round (i.e. lock in Hue or Sat/Lum dpending on game mode)
   useEffect(() => {
@@ -114,10 +111,30 @@ export default function Game() {
     return () => {};
   }, [highscores]);
 
+  // Fetch colour names from API
+  useEffect(() => {
+    if (!isLoaded.current) {
+      isLoaded.current = true;
+      return;
+    }
+    let hexTargets = roundColors.map((round) =>
+      tinycolor.fromRatio(round.targetColor).toHexString()
+    );
+    let requestString = hexTargets.map((t) => t.slice(1)).join(',');
+    fetch(`https://api.color.pizza/v1/${requestString}`, {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        // console.log('colors', response.colors);
+        let names = response.colors.map((n) => n.name);
+        setRoundColorNames(names);
+      })
+      .catch((error) => console.log(error));
+  }, [roundColors]);
+
   // Event handlers
   const handlePickColor = (e) => {
-    // console.log(pickedColor);
-    // console.log(roundColors[round - 1]);
     const targetColor = roundColors[round - 1].targetColor;
 
     setResults([...results, { picked: pickedColor, target: targetColor }]);
@@ -132,7 +149,7 @@ export default function Game() {
 
   const handleShowResults = (e) => {
     setRoundStage('results');
-    console.log(results);
+    // console.log(results);
   };
 
   const handleRestartGame = (e) => {
@@ -275,6 +292,7 @@ export default function Game() {
         <Results
           results={results}
           gameMode={gameMode}
+          roundColorNames={roundColorNames}
           handleRestartGame={handleRestartGame}
           handleBackToStart={handleBackToStart}
           handleUpdateHighscores={handleUpdateHighscores}
