@@ -192,6 +192,14 @@ export default function Game() {
   };
 
   const handleUpdateHighscores = (score) => {
+    // don't update highscore if using a preview (unless a memory gamemode)
+    if (
+      preview &&
+      !(gameMode === 'Hue' || gameMode === 'SatLum' || gameMode === 'HSL')
+    ) {
+      return;
+    }
+
     if (score > highscores[gameMode]) {
       setHighscores((prevState) => ({
         ...prevState,
@@ -225,8 +233,8 @@ export default function Game() {
             <p>Match the colour shown at the start of each round.</p>
             <p>Use the Complementary/Triad/Tetrad colours as guides</p>
             <p>
-              * Lets you preview the target colour. Only applies to modes where
-              other colours are present (i.e. not Hue, SatLum, HSL)
+              * Lets you preview the target colour. Score don't contribute to
+              highscores. Doesn't apply to memory games.
             </p>
           </div>
           <Highscores highscores={highscores} />
