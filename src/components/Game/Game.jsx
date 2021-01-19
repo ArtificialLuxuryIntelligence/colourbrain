@@ -121,6 +121,7 @@ export default function Game() {
       tinycolor.fromRatio(round.targetColor).toHexString()
     );
     let requestString = hexTargets.map((t) => t.slice(1)).join(',');
+    // https://github.com/meodai/color-names
     fetch(`https://api.color.pizza/v1/${requestString}`, {
       method: 'GET',
     })
