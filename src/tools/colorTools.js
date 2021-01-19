@@ -41,9 +41,15 @@ const randomRGBA_matchH = (color) => {
 
 const colorCombos = (color) => {
   const complement = tinycolor(color).complement().toRgbString();
-  let splitComplement = tinycolor(color)
-    .splitcomplement()
-    .map((c) => c.toRgbString());
+
+  //Thetinycolor built in method rotates the hue by too much in my opinion (normal is 150 and 210 degs from base colour)
+  // let splitComplement = tinycolor(color)
+  //   .splitcomplement()
+  //   .map((c) => c.toRgbString());
+
+  // console.log('SCOMP', splitComplement, color);
+
+  let splitComplement = splitComp(color);
 
   let triad = tinycolor(color)
     .triad()
@@ -52,10 +58,12 @@ const colorCombos = (color) => {
     .tetrad()
     .map((c) => c.toRgbString());
 
+  console.log('SC', splitComplement);
+  console.log('targ', tinycolor(color).toRgbString());
+  console.log(triad);
   //remove original colors
   triad.shift();
   tetrad.shift();
-  splitComplement.shift();
   return { complement, splitComplement, triad, tetrad };
 };
 
@@ -63,6 +71,13 @@ const colorCombos = (color) => {
 const randomInRange = (range = [0, 1]) => {
   let [min, max] = range;
   return Math.random() * (max - min) + min;
+};
+
+const splitComp = (color) => {
+  return [
+    tinycolor(color).spin(150).toRgbString(),
+    tinycolor(color).spin(210).toRgbString(),
+  ];
 };
 
 export {

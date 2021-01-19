@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import tinycolor from 'tinycolor2';
 import { calculateTotalScore, calculateScore } from './../../tools/scoring';
+import { gameModeMap } from './../../tools/gameModeMaps';
 import './Results.scss';
 
 import Button from '../Button/Button';
@@ -14,6 +15,7 @@ export default function Results({
   handleBackToStart,
   handleUpdateHighscores,
 }) {
+  const readableGameMode = gameModeMap[gameMode];
   const totalScore = calculateTotalScore(results);
   useEffect(() => {
     handleUpdateHighscores(totalScore);
@@ -22,7 +24,7 @@ export default function Results({
   return (
     <div className="results">
       <h3>
-        {gameMode} - Score : {totalScore} %
+        {readableGameMode} - Score : {totalScore} %
       </h3>
       <Button label="Restart" handleClick={handleRestartGame} />
       <Button label="Home" handleClick={handleBackToStart} />
