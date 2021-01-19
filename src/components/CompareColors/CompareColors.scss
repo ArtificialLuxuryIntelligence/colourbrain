@@ -22,6 +22,9 @@ $height: 200px;
       height: $height;
       margin: 0 1em;
     }
+    .target {
+      transition: all 1.5s;
+    }
     button {
       display: block;
       width: 100%;
