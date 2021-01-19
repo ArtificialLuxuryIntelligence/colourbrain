@@ -11,7 +11,7 @@ export default function ColorPicker({
   gameMode,
   roundColors,
 }) {
-  const { complement, triad, tetrad } = roundColors;
+  const { complement, splitComplement, triad, tetrad } = roundColors;
   const { r, g, b } = pickedColor;
 
   return (
@@ -29,6 +29,18 @@ export default function ColorPicker({
             style={{ backgroundColor: `${complement}` }}
           ></div>
         )}
+
+        {(gameMode === 'SCompHue' ||
+          gameMode === 'SCompSL' ||
+          gameMode === 'SCompHSL') &&
+          splitComplement.map((sComp) => (
+            <div
+              key={triad}
+              className="split-complement-color"
+              style={{ backgroundColor: `${sComp}` }}
+            ></div>
+          ))}
+
         {(gameMode === 'TriadHue' ||
           gameMode === 'TriadSL' ||
           gameMode === 'TriadHSL') &&

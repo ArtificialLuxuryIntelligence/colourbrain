@@ -41,6 +41,9 @@ export default function Game() {
     CompHue: 0,
     CompSL: 0,
     CompHSL: 0,
+    SCompHue: 0,
+    SCompSL: 0,
+    SCompHSL: 0,
     TriadHue: 0,
     TriadSL: 0,
     TriadHSL: 0,
@@ -57,32 +60,21 @@ export default function Game() {
       const targetColor = roundColors[round - 1].targetColor;
       switch (gameMode) {
         case 'Hue':
-          setPickedColor(randomRGBA_matchSL(targetColor));
-          break;
         case 'CompHue':
-          setPickedColor(randomRGBA_matchSL(targetColor));
-          break;
+        case 'SCompHue':
         case 'TriadHue':
-          setPickedColor(randomRGBA_matchSL(targetColor));
-          break;
         case 'TetradHue':
           setPickedColor(randomRGBA_matchSL(targetColor));
+
           break;
         case 'SatLum':
-          setPickedColor(randomRGBA_matchH(targetColor));
-          break;
+        case 'SCompSL':
         case 'CompSL':
-          setPickedColor(randomRGBA_matchH(targetColor));
-          break;
         case 'TriadSL':
-          setPickedColor(randomRGBA_matchH(targetColor));
-          break;
         case 'TetradSL':
           setPickedColor(randomRGBA_matchH(targetColor));
           break;
-        // case 'HSL':
-        //   setPickedColor(randomRGBA([20, 235]));
-        //   break;
+        // All HSL options get a random colour
         default:
           setPickedColor(randomRGBA([20, 235]));
       }
@@ -294,9 +286,11 @@ const generateRounds = (rounds) => {
   while (r < rounds) {
     const targetColor = randomRGBA([20, 235]);
 
-    const { complement, triad, tetrad } = colorCombos(targetColor);
+    const { complement, splitComplement, triad, tetrad } = colorCombos(
+      targetColor
+    );
 
-    res.push({ targetColor, complement, triad, tetrad });
+    res.push({ targetColor, complement, splitComplement, triad, tetrad });
     r++;
   }
   return res;

@@ -91,6 +91,29 @@ function TargetColor({ colors, gameMode }) {
           </div>
         </div>
       );
+    case 'SCompHue':
+    case 'SCompSL':
+    case 'SCompHSL':
+      return (
+        <div className="targets targets-3">
+          <div
+            className="target"
+            style={{ backgroundColor: targetColor }}
+          ></div>
+
+          <div className="target-group">
+            {colors.splitComplement.map((col, idx) => {
+              return (
+                <div
+                  className="target"
+                  key={idx}
+                  style={{ backgroundColor: col }}
+                ></div>
+              );
+            })}
+          </div>
+        </div>
+      );
     case 'TriadHue':
     case 'TriadSL':
     case 'TriadHSL':

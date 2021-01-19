@@ -3,7 +3,7 @@ import tinycolor from 'tinycolor2';
 
 const colorDifference = (c1, c2) => {
   // params rgb objects
-    const { r, g, b } = c1;
+  const { r, g, b } = c1;
   const { r: rp, g: gp, b: bp } = c2;
   let delta = deltaE([r, g, b], [rp, gp, bp]);
   return delta;
@@ -38,8 +38,13 @@ const randomRGBA_matchH = (color) => {
   let rgb = tinycolor(hsl).toRgb();
   return rgb;
 };
+
 const colorCombos = (color) => {
   const complement = tinycolor(color).complement().toRgbString();
+  let splitComplement = tinycolor(color)
+    .splitcomplement()
+    .map((c) => c.toRgbString());
+
   let triad = tinycolor(color)
     .triad()
     .map((c) => c.toRgbString());
@@ -50,7 +55,8 @@ const colorCombos = (color) => {
   //remove original colors
   triad.shift();
   tetrad.shift();
-  return { complement, triad, tetrad };
+  splitComplement.shift();
+  return { complement, splitComplement, triad, tetrad };
 };
 
 // --- util

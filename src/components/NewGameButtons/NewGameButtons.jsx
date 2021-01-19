@@ -49,6 +49,26 @@ export default function NewGameButtons({
         handleClick={handleSelectMode}
       />
 
+      <h2>Split-complement</h2>
+      <Button
+        dataKey="gameMode"
+        data="SCompHue"
+        label="H"
+        handleClick={handleSelectMode}
+      />
+      <Button
+        dataKey="gameMode"
+        data="SCompSL"
+        label="SL"
+        handleClick={handleSelectMode}
+      />
+      <Button
+        dataKey="gameMode"
+        data="SCompHSL"
+        label="HSL"
+        handleClick={handleSelectMode}
+      />
+
       <h2>Triad</h2>
       <Button
         dataKey="gameMode"
