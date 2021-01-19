@@ -20,6 +20,8 @@ export default function CompareColors({
 
   return (
     <div className="compare-colors">
+      <h4>{score}%</h4>
+
       <div className="round-group">
         <div
           className="target"
@@ -29,7 +31,6 @@ export default function CompareColors({
           className="picked"
           style={{ backgroundColor: `${pickedCString}` }}
         ></div>
-        <h4>{score}%</h4>
       </div>
       {round === totalRounds ? (
         <Button handleClick={handleShowResults} label="Results" />

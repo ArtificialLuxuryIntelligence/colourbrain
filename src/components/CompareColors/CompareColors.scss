@@ -1,11 +1,16 @@
+$height: 200px;
+
 .compare-colors {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
+  min-height: 90vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 
   .round-group {
-    margin: 2rem;
+    // margin: 2rem;
     display: flex;
     // width: 100%;
     justify-content: center;
@@ -13,8 +18,9 @@
     .picked,
     .target {
       border-radius: 50%;
-      width: 20vw;
-      height: 20vw;
+      width: $height;
+      height: $height;
+      margin: 0 1em;
     }
     button {
       display: block;

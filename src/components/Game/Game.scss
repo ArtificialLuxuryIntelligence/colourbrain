@@ -1,7 +1,8 @@
 .game-container {
   // width: 100vw;
-  // min-height: 90vh;
-  height: 90vh;
+  // height: 90vh;
+  // padding: 2rem;
+  min-height: 90vh;
   .back-button-container {
     z-index: 4;
     position: absolute;
@@ -12,7 +13,7 @@
 
 .new-game {
   // width: 100%;
-  height: 90vh;
+  min-height: 90vh;
   padding: 2rem;
   text-align: center;
   // display: flex;

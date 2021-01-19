@@ -32,6 +32,8 @@ export default function Results({
       <ul>
         {results.map((round, idx) => {
           const { r, g, b } = round.picked;
+          const { r: rt, g: gt, b: bt } = round.target;
+
           const score = Math.round(calculateScore(round.picked, round.target));
           console.log(calculateScore(round.picked, round.target));
           console.log(roundColors[idx]);
@@ -39,19 +41,18 @@ export default function Results({
           return (
             <li key={idx} className="round-group">
               {/* <h4>Round {idx + 1}</h4> */}
-              <h4>{roundColorNames[idx]}</h4>
-              {/* <h3>{roundColors}</h3> */}
-              {/* <div
-                className="target"
-                style={{ backgroundColor: `rgb(${rp},${gp},${bp})` }}
-              ></div> */}
+              <h4 className="color-name">{roundColorNames[idx]}</h4>
+
               <TargetColor gameMode={gameMode} colors={roundColors[idx]} />
               <div
                 className="picked"
                 style={{ backgroundColor: `rgb(${r},${g},${b})` }}
+                // style={{
+                //   background: `radial-gradient(rgb(${r},${g},${b}) 0%, rgb(${r},${g},${b}) 80%,rgb(${rt},${gt},${bt}) 100%)`,
+                // }}
               ></div>
 
-              <h4>{score} %</h4>
+              <h4 className="percent">{score} %</h4>
             </li>
           );
         })}
