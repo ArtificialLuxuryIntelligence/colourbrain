@@ -1,6 +1,6 @@
 // mapping between the game mode codes and their readable names
 
-const gameModeMap = {
+const gamemodeMap = {
   Hue: 'Memory - Hue',
   SatLum: 'Memory - Saturation/Luminosity',
   HSL: 'Memory - Hue/Saturation/Luminosity',
@@ -22,4 +22,4 @@ const gameModeMap = {
   TetradHSL: 'Tetrad - Hue/Saturation/Luminosity',
 };
 
-export { gameModeMap };
+export { gamemodeMap };

@@ -12,58 +12,58 @@ export default function NewGameButtons({
     <div className="new-game-buttons">
       <h2>Memory</h2>
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         label="H"
         data="Hue"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         label="SL"
         data="SatLum"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="HSL"
         label="HSL"
         handleClick={handleSelectMode}
       />
       <h2>Complement</h2>
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="CompHue"
         label="H"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="CompSL"
         label="SL"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="CompHSL"
         label="HSL"
         handleClick={handleSelectMode}
       />
 
-      <h2>Split-complement</h2>
+      <h2>Split-Complement</h2>
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="SCompHue"
         label="H"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="SCompSL"
         label="SL"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="SCompHSL"
         label="HSL"
         handleClick={handleSelectMode}
@@ -71,19 +71,19 @@ export default function NewGameButtons({
 
       <h2>Triad</h2>
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="TriadHue"
         label="H"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="TriadSL"
         label="SL"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="TriadHSL"
         label="HSL"
         handleClick={handleSelectMode}
@@ -91,19 +91,19 @@ export default function NewGameButtons({
 
       <h2>Tetrad</h2>
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="TetradHue"
         label="H"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="TetradSL"
         label="SL"
         handleClick={handleSelectMode}
       />
       <Button
-        dataKey="gameMode"
+        dataKey="gamemode"
         data="TetradHSL"
         label="HSL"
         handleClick={handleSelectMode}

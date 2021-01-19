@@ -4,13 +4,13 @@ import {
   randomRGBA,
   randomRGBA_matchH,
   randomRGBA_matchSL,
-  colorCombos,
+  generateRounds,
 } from './../../tools/colorTools';
 import './Game.scss';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import RoundColor from '../RoundColor/RoundColor';
 import Button from '../Button/Button';
-import Checkbox from './../Checkbox/Checkbox';
+// import Checkbox from './../Checkbox/Checkbox';
 import Results from '../Results/Results';
 import CompareColors from '../CompareColors/CompareColors';
 import NewGameButtons from '../NewGameButtons/NewGameButtons';
@@ -30,7 +30,7 @@ export default function Game() {
   // stages: new, preview, pick, compare, results
   const [roundStage, setRoundStage] = useState('new');
   // game modes: Hue, SatLum, HSL
-  const [gameMode, setgameMode] = useState('Hue');
+  const [gamemode, setgamemode] = useState('Hue');
   const [preview, setPreview] = useState(true);
   const [userPreferencePreview, setuserPreferencePreview] = useState(false);
   const [gameActive, setGameActive] = useState(false);
@@ -58,7 +58,7 @@ export default function Game() {
   useEffect(() => {
     if (gameActive) {
       const targetColor = roundColors[round - 1].targetColor;
-      switch (gameMode) {
+      switch (gamemode) {
         case 'Hue':
         case 'CompHue':
         case 'SCompHue':
@@ -148,6 +148,7 @@ export default function Game() {
   };
 
   const handleRestartGame = (e) => {
+    console.log('restarting...');
     setGameActive(true);
     setRoundColors(generateRounds(totalRounds));
     setRound(1);
@@ -164,7 +165,7 @@ export default function Game() {
   const handleSelectMode = (e) => {
     let mode = e.target.dataset.gamemode;
     console.log(mode);
-    setgameMode(mode);
+    setgamemode(mode);
 
     if (
       userPreferencePreview ||
@@ -187,15 +188,15 @@ export default function Game() {
     // don't update highscore if using a preview (unless a memory gamemode)
     if (
       preview &&
-      !(gameMode === 'Hue' || gameMode === 'SatLum' || gameMode === 'HSL')
+      !(gamemode === 'Hue' || gamemode === 'SatLum' || gamemode === 'HSL')
     ) {
       return;
     }
 
-    if (score > highscores[gameMode]) {
+    if (score > highscores[gamemode]) {
       setHighscores((prevState) => ({
         ...prevState,
-        [gameMode]: score,
+        [gamemode]: score,
       }));
     }
   };
@@ -241,7 +242,7 @@ export default function Game() {
             pickedColor={pickedColor}
             setPickedColor={setPickedColor}
             handlePickColor={handlePickColor}
-            gameMode={gameMode}
+            gamemode={gamemode}
             roundColors={roundColors[round - 1]}
             // targetColor={roundColors[round - 1].targetColor}
             // complement={roundColors[round - 1].complement}
@@ -268,7 +269,7 @@ export default function Game() {
       {roundStage === 'results' && (
         <Results
           results={results}
-          gameMode={gameMode}
+          gamemode={gamemode}
           roundColorNames={roundColorNames}
           roundColors={roundColors}
           handleRestartGame={handleRestartGame}
@@ -279,19 +280,3 @@ export default function Game() {
     </div>
   );
 }
-
-const generateRounds = (rounds) => {
-  let res = [];
-  let r = 0;
-  while (r < rounds) {
-    const targetColor = randomRGBA([20, 235]);
-
-    const { complement, splitComplement, triad, tetrad } = colorCombos(
-      targetColor
-    );
-
-    res.push({ targetColor, complement, splitComplement, triad, tetrad });
-    r++;
-  }
-  return res;
-};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { gameModeMap } from './../../tools/gameModeMaps';
+import { gamemodeMap } from './../../tools/gameModeMaps';
 import './Highscores.scss';
 
 export default function Highscores({ highscores }) {
@@ -7,21 +7,23 @@ export default function Highscores({ highscores }) {
     <div className="highscores">
       <h2>My highscores</h2>
       <table>
-        <tr>
-          <th>Game Mode</th>
-          <th>Score</th>
-        </tr>
-        {Object.entries(highscores).map((s) => {
-          let readableGameMode = gameModeMap[s[0]];
-          let score = s[1];
+        <tbody>
+          <tr>
+            <th>Game Mode</th>
+            <th>Score</th>
+          </tr>
+          {Object.entries(highscores).map((s) => {
+            let readablegamemode = gamemodeMap[s[0]];
+            let score = s[1];
 
-          return (
-            <tr>
-              <td>{readableGameMode}</td>
-              <td>{score}%</td>
-            </tr>
-          );
-        })}
+            return (
+              <tr>
+                <td>{readablegamemode}</td>
+                <td>{score}%</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );

@@ -1,6 +1,6 @@
 import './ColorPicker.scss';
 
-import { RgbColorPicker, HslColorPicker } from 'react-colorful';
+import { RgbColorPicker} from 'react-colorful';
 import 'react-colorful/dist/index.css';
 import Button from './../Button/Button';
 
@@ -8,7 +8,7 @@ export default function ColorPicker({
   pickedColor,
   setPickedColor,
   handlePickColor,
-  gameMode,
+  gamemode,
   roundColors,
 }) {
   const { complement, splitComplement, triad, tetrad } = roundColors;
@@ -16,13 +16,13 @@ export default function ColorPicker({
 
   return (
     <div
-      className={`color-picker gameMode-${gameMode}`}
+      className={`color-picker gamemode-${gamemode}`}
       style={{ backgroundColor: `rgb(${r},${g},${b})` }}
     >
       <div className="reference-colors">
-        {(gameMode === 'CompHue' ||
-          gameMode === 'CompSL' ||
-          gameMode === 'CompHSL') && (
+        {(gamemode === 'CompHue' ||
+          gamemode === 'CompSL' ||
+          gamemode === 'CompHSL') && (
           <div
             key={complement}
             className="complement-color"
@@ -30,9 +30,9 @@ export default function ColorPicker({
           ></div>
         )}
 
-        {(gameMode === 'SCompHue' ||
-          gameMode === 'SCompSL' ||
-          gameMode === 'SCompHSL') &&
+        {(gamemode === 'SCompHue' ||
+          gamemode === 'SCompSL' ||
+          gamemode === 'SCompHSL') &&
           splitComplement.map((sComp) => (
             <div
               key={triad}
@@ -41,9 +41,9 @@ export default function ColorPicker({
             ></div>
           ))}
 
-        {(gameMode === 'TriadHue' ||
-          gameMode === 'TriadSL' ||
-          gameMode === 'TriadHSL') &&
+        {(gamemode === 'TriadHue' ||
+          gamemode === 'TriadSL' ||
+          gamemode === 'TriadHSL') &&
           triad.map((triad) => (
             <div
               key={triad}
@@ -51,9 +51,9 @@ export default function ColorPicker({
               style={{ backgroundColor: `${triad}` }}
             ></div>
           ))}
-        {(gameMode === 'TetradHue' ||
-          gameMode === 'TetradSL' ||
-          gameMode === 'TetradHSL') &&
+        {(gamemode === 'TetradHue' ||
+          gamemode === 'TetradSL' ||
+          gamemode === 'TetradHSL') &&
           tetrad.map((tetra) => (
             <div
               key={tetra}

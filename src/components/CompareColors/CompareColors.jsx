@@ -25,7 +25,7 @@ export default function CompareColors({
       setCircleColor(targetCString);
     }, 0);
     return () => clearTimeout(timer);
-  }, []);
+  });
 
   return (
     <div className="compare-colors">

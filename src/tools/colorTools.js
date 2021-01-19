@@ -58,13 +58,16 @@ const colorCombos = (color) => {
     .tetrad()
     .map((c) => c.toRgbString());
 
-  console.log('SC', splitComplement);
-  console.log('targ', tinycolor(color).toRgbString());
-  console.log(triad);
   //remove original colors
   triad.shift();
   tetrad.shift();
-  return { complement, splitComplement, triad, tetrad };
+  return {
+    target: tinycolor(color).toRgbString(),
+    complement,
+    splitComplement,
+    triad,
+    tetrad,
+  };
 };
 
 // --- util
@@ -80,10 +83,27 @@ const splitComp = (color) => {
   ];
 };
 
+const generateRounds = (rounds) => {
+  let res = [];
+  let r = 0;
+  while (r < rounds) {
+    const targetColor = randomRGBA([25, 230]);
+
+    const { complement, splitComplement, triad, tetrad } = colorCombos(
+      targetColor
+    );
+
+    res.push({ targetColor, complement, splitComplement, triad, tetrad });
+    r++;
+  }
+  return res;
+};
+
 export {
   colorDifference,
   randomRGBA,
   randomRGBA_matchH,
   randomRGBA_matchSL,
   colorCombos,
+  generateRounds,
 };

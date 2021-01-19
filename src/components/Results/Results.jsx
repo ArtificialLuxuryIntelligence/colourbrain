@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 import tinycolor from 'tinycolor2';
 import { calculateTotalScore, calculateScore } from './../../tools/scoring';
-import { gameModeMap } from './../../tools/gameModeMaps';
+import { gamemodeMap } from './../../tools/gameModeMaps';
 import './Results.scss';
 
 import Button from '../Button/Button';
 
 export default function Results({
   results,
-  gameMode,
+  gamemode,
   roundColorNames,
   roundColors,
   handleRestartGame,
   handleBackToStart,
   handleUpdateHighscores,
 }) {
-  const readableGameMode = gameModeMap[gameMode];
+  const readablegamemode = gamemodeMap[gamemode];
   const totalScore = calculateTotalScore(results);
   useEffect(() => {
     handleUpdateHighscores(totalScore);
@@ -24,7 +24,7 @@ export default function Results({
   return (
     <div className="results">
       <h3>
-        {readableGameMode} - Score : {totalScore} %
+        {readablegamemode} - Score : {totalScore} %
       </h3>
       <Button label="Restart" handleClick={handleRestartGame} />
       <Button label="Home" handleClick={handleBackToStart} />
@@ -32,7 +32,6 @@ export default function Results({
       <ul>
         {results.map((round, idx) => {
           const { r, g, b } = round.picked;
-          const { r: rt, g: gt, b: bt } = round.target;
 
           const score = Math.round(calculateScore(round.picked, round.target));
           console.log(calculateScore(round.picked, round.target));
@@ -43,7 +42,7 @@ export default function Results({
               {/* <h4>Round {idx + 1}</h4> */}
               <h4 className="color-name">{roundColorNames[idx]}</h4>
 
-              <TargetColor gameMode={gameMode} colors={roundColors[idx]} />
+              <TargetColor gamemode={gamemode} colors={roundColors[idx]} />
               <div
                 className="picked"
                 style={{ backgroundColor: `rgb(${r},${g},${b})` }}
@@ -61,11 +60,11 @@ export default function Results({
   );
 }
 
-function TargetColor({ colors, gameMode }) {
+function TargetColor({ colors, gamemode }) {
   console.log(colors);
   const targetColor = tinycolor.fromRatio(colors.targetColor).toHexString();
 
-  switch (gameMode) {
+  switch (gamemode) {
     case 'Hue':
     case 'SatLum':
     case 'HSL':
