@@ -1,8 +1,8 @@
 .highscores {
-  ul {
-    // display: flex;
-    list-style: none;
-    li {
+  text-align: left;
+  table {
+    border-spacing: 3em 1em;
+    td {
     }
   }
 }

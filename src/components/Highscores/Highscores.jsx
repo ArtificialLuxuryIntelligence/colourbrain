@@ -1,4 +1,5 @@
 import React from 'react';
+import { gameModeMap } from './../../tools/gameModeMaps';
 import './Highscores.scss';
 
 export default function Highscores({ highscores }) {
@@ -11,10 +12,13 @@ export default function Highscores({ highscores }) {
           <th>Score</th>
         </tr>
         {Object.entries(highscores).map((s) => {
+          let readableGameMode = gameModeMap[s[0]];
+          let score = s[1];
+
           return (
             <tr>
-              <th>{s[0]}</th>
-              <td>{s[1]}%</td>
+              <td>{readableGameMode}</td>
+              <td>{score}%</td>
             </tr>
           );
         })}
