@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import tinycolor from 'tinycolor2';
+import { calculateTotalScore, calculateScore } from './../../tools/scoring';
 import './Results.scss';
-import { colorDifference } from '../../tools/colorTools';
 
 import Button from '../Button/Button';
 
@@ -8,6 +9,7 @@ export default function Results({
   results,
   gameMode,
   roundColorNames,
+  roundColors,
   handleRestartGame,
   handleBackToStart,
   handleUpdateHighscores,
@@ -28,17 +30,20 @@ export default function Results({
       <ul>
         {results.map((round, idx) => {
           const { r, g, b } = round.picked;
-          const { r: rp, g: gp, b: bp } = round.target;
           const score = Math.round(calculateScore(round.picked, round.target));
+          console.log(calculateScore(round.picked, round.target));
+          console.log(roundColors[idx]);
 
           return (
             <li key={idx} className="round-group">
               {/* <h4>Round {idx + 1}</h4> */}
               <h4>{roundColorNames[idx]}</h4>
-              <div
+              {/* <h3>{roundColors}</h3> */}
+              {/* <div
                 className="target"
                 style={{ backgroundColor: `rgb(${rp},${gp},${bp})` }}
-              ></div>
+              ></div> */}
+              <TargetColor gameMode={gameMode} colors={roundColors[idx]} />
               <div
                 className="picked"
                 style={{ backgroundColor: `rgb(${r},${g},${b})` }}
@@ -53,17 +58,94 @@ export default function Results({
   );
 }
 
-const calculateScore = (c1, c2) => {
-  let diff = colorDifference(c1, c2); // 0 (same) - 100 (opposite)
-  let temp = 100 - diff * 2;
-  let score = temp >= 0 ? temp : 0;
-  return score;
-};
-const calculateTotalScore = (results) => {
-  let total = results.reduce((acc, round) => {
-    let score = calculateScore(round.picked, round.target);
-    return score + acc;
-  }, 0);
+function TargetColor({ colors, gameMode }) {
+  console.log(colors);
+  const targetColor = tinycolor.fromRatio(colors.targetColor).toHexString();
 
-  return Math.round(total / results.length);
-};
+  switch (gameMode) {
+    case 'Hue':
+    case 'SatLum':
+    case 'HSL':
+      return (
+        <div className="targets targets-1">
+          <div
+            className="target"
+            style={{ backgroundColor: targetColor }}
+          ></div>
+        </div>
+      );
+    case 'CompHue':
+    case 'CompSL':
+    case 'CompHSL':
+      return (
+        <div className="targets targets-2">
+          <div
+            className="target"
+            style={{ backgroundColor: targetColor }}
+          ></div>
+          <div className="target-group">
+            <div
+              className="target"
+              style={{ backgroundColor: colors.complement }}
+            ></div>
+          </div>
+        </div>
+      );
+    case 'TriadHue':
+    case 'TriadSL':
+    case 'TriadHSL':
+      return (
+        <div className="targets targets-3">
+          <div
+            className="target"
+            style={{ backgroundColor: targetColor }}
+          ></div>
+
+          <div className="target-group">
+            {colors.triad.map((col, idx) => {
+              return (
+                <div
+                  className="target"
+                  key={idx}
+                  style={{ backgroundColor: col }}
+                ></div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    case 'TetradHue':
+    case 'TetradSL':
+    case 'TetradHSL':
+      return (
+        <div className="targets targets-4">
+          <div
+            className="target"
+            style={{ backgroundColor: targetColor }}
+          ></div>
+          <div className="target-group">
+            {colors.tetrad.map((col, idx) => {
+              return (
+                <div
+                  className="target"
+                  key={idx}
+                  style={{ backgroundColor: col }}
+                ></div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    default:
+      return (
+        <div>
+          <div className="targets">
+            <div
+              className="target"
+              style={{ backgroundColor: targetColor }}
+            ></div>
+          </div>
+        </div>
+      );
+  }
+}

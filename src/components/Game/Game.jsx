@@ -13,11 +13,13 @@ import Button from '../Button/Button';
 import Checkbox from './../Checkbox/Checkbox';
 import Results from '../Results/Results';
 import CompareColors from '../CompareColors/CompareColors';
+import NewGameButtons from '../NewGameButtons/NewGameButtons';
+import Highscores from '../Highscores/Highscores';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
-const totalRounds = 3;
-const flashTime = 2800;
+const totalRounds = 2;
+const flashTime = 1200;
 
 export default function Game() {
   const [roundColors, setRoundColors] = useState(generateRounds(totalRounds));
@@ -168,7 +170,8 @@ export default function Game() {
   };
 
   const handleSelectMode = (e) => {
-    let mode = e.target.value;
+    let mode = e.target.dataset.gamemode;
+    console.log(mode);
     setgameMode(mode);
 
     if (
@@ -186,7 +189,6 @@ export default function Game() {
 
   const handleToggleUserPrefPreview = (e) => {
     setuserPreferencePreview(!userPreferencePreview);
-    console.log(userPreferencePreview);
   };
 
   const handleUpdateHighscores = (score) => {
@@ -213,27 +215,10 @@ export default function Game() {
         )}
       {roundStage === 'new' && (
         <div className="new-game">
-          <Button label="Hue" handleClick={handleSelectMode} />
-          <Button label="SatLum" handleClick={handleSelectMode} />
-          <Button label="HSL" handleClick={handleSelectMode} />
-
-          <Button label="CompHue" handleClick={handleSelectMode} />
-          <Button label="CompSL" handleClick={handleSelectMode} />
-          <Button label="CompHSL" handleClick={handleSelectMode} />
-
-          <Button label="TriadHue" handleClick={handleSelectMode} />
-          <Button label="TriadSL" handleClick={handleSelectMode} />
-          <Button label="TriadHSL" handleClick={handleSelectMode} />
-
-          <Button label="TetradHue" handleClick={handleSelectMode} />
-          <Button label="TetradSL" handleClick={handleSelectMode} />
-          <Button label="TetradHSL" handleClick={handleSelectMode} />
-
-          {/* custom game with checkbox to choose which modes to include */}
-          <Checkbox
-            label={'Colour preview *'}
-            handleChange={handleToggleUserPrefPreview}
-            checked={userPreferencePreview}
+          <NewGameButtons
+            handleSelectMode={handleSelectMode}
+            handleToggleUserPrefPreview={handleToggleUserPrefPreview}
+            userPreferencePreview={userPreferencePreview}
           />
 
           <div>
@@ -244,16 +229,7 @@ export default function Game() {
               other colours are present (i.e. not Hue, SatLum, HSL)
             </p>
           </div>
-          <div>
-            <h2>My highscores</h2>
-            {Object.entries(highscores).map((s) => {
-              return (
-                <li>
-                  {s[0]} = {s[1]} %
-                </li>
-              );
-            })}
-          </div>
+          <Highscores highscores={highscores} />
         </div>
       )}
       {roundStage === 'preview' && (
@@ -294,6 +270,7 @@ export default function Game() {
           results={results}
           gameMode={gameMode}
           roundColorNames={roundColorNames}
+          roundColors={roundColors}
           handleRestartGame={handleRestartGame}
           handleBackToStart={handleBackToStart}
           handleUpdateHighscores={handleUpdateHighscores}

@@ -46,6 +46,8 @@
 .gameMode-TriadHue,
 .gameMode-TetradHue {
   .react-colorful {
+    width: 50vw;
+    // height: 50vh;
     .react-colorful__saturation {
       display: none;
     }
@@ -60,6 +62,8 @@
 .gameMode-TriadSL,
 .gameMode-TetradSL {
   .react-colorful {
+    width: 50vw;
+    height: 50vh;
     .react-colorful__hue {
       display: none;
     }
