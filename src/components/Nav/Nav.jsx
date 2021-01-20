@@ -15,13 +15,19 @@ export default function Nav() {
       </span>
       <ul>
         <li>
-          <Link to="/">Play</Link>
+          <Link onClick={handleToggleNav} to="/play">
+            Play
+          </Link>
         </li>
         <li>
-          <Link to="/FAQ">FAQ</Link>
+          <Link onClick={handleToggleNav} to="/FAQ">
+            FAQ
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link onClick={handleToggleNav} to="/about">
+            About
+          </Link>
         </li>
       </ul>
     </nav>

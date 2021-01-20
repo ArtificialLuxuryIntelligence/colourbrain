@@ -1,14 +1,23 @@
+$white: #d7d3cb;
+$black: #282c34;
+
 $height: 80px;
 //menu bubble radius
-$radius: 130px;
+$radius: 140px;
 
 nav {
-  padding: 1em;
-  width: 100%;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // padding: 1em;
+  // width: 100%;
   display: flex;
   flex-direction: row-reverse;
+  // overflow: visible;
   //   justify-content: center;
   //   align-items: center;
+  background-color: transparent;
+
   .nav-toggle {
     z-index: 2;
     cursor: pointer;
@@ -22,6 +31,7 @@ nav {
   }
   ul {
     z-index: 1;
+    background-color: transparent;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -34,16 +44,21 @@ nav {
 
     list-style: none;
     // transform: translateX(50vw);
-
+    mix-blend-mode: exclusion;
+    // mix-blend-mode: hue;
     li {
-      transition: 0.4s ease-out;
+      font-size: 1rem;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
       position: absolute;
-      //   margin: 0.4em;
-      // padding: 1em;
-
-      border: 1px solid white;
       border-radius: 50%;
-
+      box-sizing: border-box;
+      background: black; // filter: invert(100);
+      // background: white;
+      // mix-blend-mode: difference;
+      // background-blend-mode: color-burn;
+      // mix-blend-mode: color-burn;
+      // mix-blend-mode: exclusion;
       //   padding: 4rem;
       a {
         display: flex;
@@ -54,8 +69,15 @@ nav {
         width: $height;
         height: $height;
         text-align: center;
-        color: white;
+        color: $white;
+        border: 1px solid $white;
+        border-radius: 50%;
+
+        background: transparent;
         text-decoration: none;
+      }
+      &:hover {
+        filter: invert(100%);
       }
     }
   }
@@ -64,18 +86,29 @@ nav {
 .nav-active {
   ul {
     li {
+      opacity: 1;
+
       &:nth-child(1) {
-        transform: translateX(-$radius);
+        // transform: translateX(-$radius);
+        transform: rotate(-5deg) translateX(-$radius) rotate(5deg);
+        transition-duration: 0.3s;
       }
       &:nth-child(2) {
-        transform: translate(
-          calc(-1.414 * 0.5 *#{$radius}),
-          calc(1.414 * 0.5 *#{$radius})
-        );
-        // transform: translateY($radius);
+        // transition-delay: 0.1s;
+        transition-duration: 0.4s;
+
+        // transform: translate(
+        //   calc(-1.414 * 0.5 *#{$radius}),
+        //   calc(1.414 * 0.5 *#{$radius})
+        // );
+        transform: rotate(-45deg) translateX(-$radius) rotate(45deg);
       }
       &:nth-child(3) {
-        transform: translateY($radius);
+        // transition-delay: 0.2s;
+        transition-duration: 0.47s;
+
+        // transform: translateY($radius);
+        transform: rotate(-85deg) translateX(-$radius) rotate(85deg);
       }
     }
   }
