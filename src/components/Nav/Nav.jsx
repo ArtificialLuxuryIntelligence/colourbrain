@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
-export default function Nav() {
-  const [navActive, setNavActive] = useState(false);
-
+export default function Nav({ navActive, setNavActive }) {
   const handleToggleNav = (e) => {
     setNavActive(!navActive);
   };
+
   return (
     <nav className={navActive ? 'nav-active' : ''}>
       <span onClick={handleToggleNav} className="nav-toggle">
