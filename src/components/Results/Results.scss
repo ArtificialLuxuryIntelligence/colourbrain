@@ -50,16 +50,21 @@ $height: 200px;
       }
       .target-group {
         z-index: 1;
-        margin-left: 0.6em;
+        margin-left: 0.4em;
 
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
+        // justify-content: space-around;
 
         height: $height;
 
         .target {
-          // margin: 0.2em;
+          margin: 0.4em 0;
+
+          width: calc(#{$height}/ 2);
+          height: calc(#{$height}/ 2);
+          animation: bubble-in 0.8s cubic-bezier(0.4, -0.12, 0.57, 1.28);
         }
       }
     }
@@ -115,11 +120,26 @@ $height: 200px;
         // padding-bottom: 2em;
 
         .target {
-          // margin-right: -2em;
+          margin: 0.2em 0;
+
           width: calc(#{$height}/ 4);
           height: calc(#{$height}/ 4);
         }
       }
     }
+  }
+}
+
+/// animations
+
+@keyframes bubble-in {
+  from {
+    // position: absolute;
+    transform: translateX(-100px);
+  }
+  to {
+    // position: absolute;
+
+    transform: translateX(0px);
   }
 }

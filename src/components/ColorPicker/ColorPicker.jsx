@@ -35,7 +35,7 @@ export default function ColorPicker({
           gamemode === 'SCompHSL') &&
           splitComplement.map((sComp) => (
             <div
-              key={triad}
+              key={sComp}
               className="split-complement-color"
               style={{ backgroundColor: `${sComp}` }}
             ></div>

@@ -201,11 +201,8 @@ export default function Game() {
     }
   };
 
-  // const { r, g, b, a } = roundColors[round - 1];
-  // const { r: rp, g: gp, b: bp, a: ap } = pickedColor;
 
   return (
-    // use switch statement?
     <div className="game-container">
       {roundStage !== 'new' &&
         roundStage !== 'preview' &&
@@ -243,12 +240,7 @@ export default function Game() {
             setPickedColor={setPickedColor}
             handlePickColor={handlePickColor}
             gamemode={gamemode}
-            roundColors={roundColors[round - 1]}
-            // targetColor={roundColors[round - 1].targetColor}
-            // complement={roundColors[round - 1].complement}
-            // triad={roundColors[round - 1].triad}
-            // tetrad={roundColors[round - 1].tetrad}
-          >
+            roundColors={roundColors[round - 1]}          >
             <h1>Round {round}</h1>
           </ColorPicker>
         </>
