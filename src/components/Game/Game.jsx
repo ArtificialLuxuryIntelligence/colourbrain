@@ -18,7 +18,7 @@ import Highscores from '../Highscores/Highscores';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
-const totalRounds = 2;
+const totalRounds = 5;
 const flashTime = 1200;
 
 export default function Game() {

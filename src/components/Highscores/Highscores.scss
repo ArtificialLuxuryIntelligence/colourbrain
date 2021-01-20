@@ -1,6 +1,15 @@
 .highscores {
+  border-top: 2px solid white;
+  padding: 2rem;
+  margin-top: 2rem;
   text-align: left;
+  // display: flex;
+  // justify-content: center;
+  h2 {
+    text-align: center;
+  }
   table {
+    margin: 0 auto;
     border-spacing: 3em 1em;
     td {
     }
