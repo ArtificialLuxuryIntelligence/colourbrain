@@ -19,7 +19,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
-
+main {
+  > div {
+    min-height: 90vh;
+  }
+}
 .App-link {
   color: #61dafb;
 }
