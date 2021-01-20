@@ -19,7 +19,9 @@ $height: 200px;
     .target {
       border-radius: 50%;
       width: $height;
+      max-width: 40vw;
       height: $height;
+      max-height: 40vw;
       margin: 0 1em;
     }
     .target {

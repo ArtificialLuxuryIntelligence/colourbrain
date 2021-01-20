@@ -43,8 +43,11 @@
   }
 
   .react-colorful {
-    width: 50vw;
-    height: 50vh;
+    width: 80vw;
+    max-width: 600px;
+
+    height: 80vh;
+    max-height: 400px;
     // position: absolute;
     border-radius: 20%;
   }
@@ -56,7 +59,9 @@
 .gamemode-TriadHue,
 .gamemode-TetradHue {
   .react-colorful {
-    width: 50vw;
+    width: 80vw;
+    max-width: 600px;
+
     height: auto;
     .react-colorful__saturation {
       display: none;
@@ -73,8 +78,8 @@
 .gamemode-TriadSL,
 .gamemode-TetradSL {
   .react-colorful {
-    width: 50vw;
-    height: 50vh;
+    width: 80vw;
+    max-width: 600px;
     .react-colorful__hue {
       display: none;
     }

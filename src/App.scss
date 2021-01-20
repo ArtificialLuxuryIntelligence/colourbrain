@@ -12,6 +12,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
   color: #282c34;
   background-color: #d7d3cb; // inverse of app black color
@@ -22,7 +23,7 @@
 
   h1 {
     margin: 0;
-    padding: 0.2em;
+    padding: 0.2em 0.5em;
     text-align: center;
     color: #282c34;
   }

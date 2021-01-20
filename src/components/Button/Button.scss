@@ -1,8 +1,11 @@
-// $btn-col: #1172c4;
-$btn-col-2: white;
+$white: #d7d3cb;
+$black: #282c34;
 
-// $btn-col-2: white;
-$btn-col: #282c34;
+$btn-col: $black;
+// $btn-col: $white;
+
+$btn-col-2: $white;
+// $btn-col-2: $black;
 
 .button {
   padding: 0.4rem 1rem;

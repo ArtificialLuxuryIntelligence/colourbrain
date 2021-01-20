@@ -1,4 +1,5 @@
 $height: 200px;
+$max-height: 20vw;
 
 .results {
   // display: flex;
@@ -13,15 +14,17 @@ $height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+    max-height: $max-height;
 
     h4 {
       width: 10vw;
       align-self: center;
-
+      font-size: 0.8rem;
       margin: 0 1rem;
     }
     .color-name {
       text-align: right;
+      z-index: 3;
     }
     .percent {
       text-align: left;
@@ -30,23 +33,35 @@ $height: 200px;
     .picked {
       display: block;
       border-radius: 50%;
-      width: $height;
-      min-width: $height;
+      // width: $height;
+      // min-width: $height;
 
+      // height: $height;
+
+      width: $height;
+      max-width: $max-height;
       height: $height;
+      max-height: $max-height;
     }
 
     .targets {
       // width: 30vw;
       // height: 30vw;
       display: flex;
-      margin-right: 4rem;
+      justify-content: center;
+      align-items: center;
+      margin-right: 4vw;
 
       .target {
         z-index: 2;
         border-radius: 50%;
+        // width: $height;
+        // height: $height;
+
         width: $height;
+        max-width: $max-height;
         height: $height;
+        max-height: $max-height;
       }
       .target-group {
         z-index: 1;
@@ -64,6 +79,8 @@ $height: 200px;
 
           width: calc(#{$height}/ 2);
           height: calc(#{$height}/ 2);
+          max-width: calc(#{$max-height}/ 2);
+          max-height: calc(#{$max-height}/ 2);
           animation: bubble-in 0.8s cubic-bezier(0.4, -0.12, 0.57, 1.28);
         }
       }
@@ -72,7 +89,9 @@ $height: 200px;
     .targets-1 {
       .target {
         width: $height;
+        max-width: $max-height;
         height: $height;
+        max-height: $max-height;
       }
     }
 
@@ -83,25 +102,31 @@ $height: 200px;
       }
 
       .target-group {
-        margin-left: -2rem;
+        margin-left: -2vw;
 
         z-index: 1;
         .target {
           width: calc(#{$height}/ 2);
           height: calc(#{$height}/ 2);
+          max-width: calc(#{$max-height}/ 2);
+          max-height: calc(#{$max-height}/ 2);
         }
       }
     }
     .targets-3 {
       .target {
         width: $height;
+        max-width: $max-height;
         height: $height;
+        max-height: $max-height;
       }
 
       .target-group {
         .target {
           width: calc(#{$height}/ 3);
           height: calc(#{$height}/ 3);
+          max-width: calc(#{$max-height}/ 3);
+          max-height: calc(#{$max-height}/ 3);
         }
       }
     }
@@ -110,7 +135,9 @@ $height: 200px;
 
       .target {
         width: $height;
+        max-width: $max-height;
         height: $height;
+        max-height: $max-height;
       }
 
       .target-group {
@@ -124,6 +151,8 @@ $height: 200px;
 
           width: calc(#{$height}/ 4);
           height: calc(#{$height}/ 4);
+          max-width: calc(#{$max-height}/ 4);
+          max-height: calc(#{$max-height}/ 4);
         }
       }
     }

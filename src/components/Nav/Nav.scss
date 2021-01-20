@@ -70,7 +70,7 @@ nav {
         height: $height;
         text-align: center;
         color: $white;
-        border: 1px solid $white;
+        border: 2px solid $white;
         border-radius: 50%;
 
         background: transparent;
@@ -91,7 +91,7 @@ nav {
       &:nth-child(1) {
         // transform: translateX(-$radius);
         transform: rotate(-5deg) translateX(-$radius) rotate(5deg);
-        transition-duration: 0.3s;
+        transition-duration: 0.2s;
       }
       &:nth-child(2) {
         // transition-delay: 0.1s;

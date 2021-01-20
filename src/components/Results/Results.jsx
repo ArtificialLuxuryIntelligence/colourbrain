@@ -23,9 +23,8 @@ export default function Results({
 
   return (
     <div className="results">
-      <h3>
-        {readablegamemode} - Score : {totalScore} %
-      </h3>
+      <h3>{readablegamemode}</h3>
+      <h3> Score : {totalScore} %</h3>
       <Button label="Restart" handleClick={handleRestartGame} />
       <Button label="Home" handleClick={handleBackToStart} />
 

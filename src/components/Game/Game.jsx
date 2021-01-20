@@ -201,7 +201,6 @@ export default function Game() {
     }
   };
 
-
   return (
     <div className="game-container">
       {roundStage !== 'new' &&
@@ -220,12 +219,10 @@ export default function Game() {
           />
 
           <div>
-            <p>Match the colour shown at the start of each round.</p>
-            <p>Use the Complementary/Triad/Tetrad colours as guides</p>
-            <p>
-              * Lets you preview the target colour. Score don't contribute to
-              highscores. Doesn't apply to memory games.
-            </p>
+            <small>
+              * Stuck? Lets you preview the colour. (Score don't contribute to
+              highscores. Doesn't apply to memory games).
+            </small>
           </div>
           <Highscores highscores={highscores} />
         </div>
@@ -240,7 +237,8 @@ export default function Game() {
             setPickedColor={setPickedColor}
             handlePickColor={handlePickColor}
             gamemode={gamemode}
-            roundColors={roundColors[round - 1]}          >
+            roundColors={roundColors[round - 1]}
+          >
             <h1>Round {round}</h1>
           </ColorPicker>
         </>
