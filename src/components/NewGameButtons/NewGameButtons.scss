@@ -3,19 +3,26 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    // background-color: red;
+  }
+  ul {
+    list-style: none;
   }
 
-  h2 {
+  h3 {
     display: flex;
-    flex-direction: row;
-    // justify-content: space-around;
     align-items: center;
+    justify-content: center;
+    // flex-direction: row;
+    // justify-content: space-around;
     svg {
       overflow: visible;
       margin: 0 2rem;
       max-height: 10vh;
-      width: 130px;
-      height: 130px;
+      width: 50px;
+      height: 50px;
+      // width: auto;
+      // height: auto;
       path {
         animation: fade-in 1s ease forwards;
         opacity: 0;
@@ -114,6 +121,29 @@
         animation: segment 1s ease-in-out 1s infinite alternate,
           fade-in 1s ease 11 * 50ms forwards;
       }
+    }
+  }
+
+  .user-options {
+    margin-top: 10rem;
+  }
+  ///// Collapsible
+
+  .Collapsible {
+    // text-align: center;
+    .Collapsible__trigger {
+      // font-size: 2rem;
+      // cursor: pointer;
+      h2 {
+        justify-content: center;
+      }
+      svg {
+        // width: 2em;
+        // height: 2em;
+      }
+    }
+    .Collapsible__contentOuter {
+      text-align: center;
     }
   }
 }

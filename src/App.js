@@ -68,7 +68,7 @@ function App() {
                 </motion.div>
               </Route>
 
-              <Route key="home" path="/">
+              <Route key="home" path="/" exact>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

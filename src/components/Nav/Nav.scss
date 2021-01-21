@@ -43,9 +43,7 @@ nav {
     margin: 0;
 
     list-style: none;
-    // transform: translateX(50vw);
     mix-blend-mode: exclusion;
-    // mix-blend-mode: hue;
     li {
       font-size: 1rem;
       opacity: 0;
@@ -54,12 +52,8 @@ nav {
       border-radius: 50%;
       box-sizing: border-box;
       background: black; // filter: invert(100);
-      // background: white;
-      // mix-blend-mode: difference;
-      // background-blend-mode: color-burn;
-      // mix-blend-mode: color-burn;
-      // mix-blend-mode: exclusion;
-      //   padding: 4rem;
+      // background: hsl(30, 80%, 50%);
+
       a {
         display: flex;
         justify-content: center;

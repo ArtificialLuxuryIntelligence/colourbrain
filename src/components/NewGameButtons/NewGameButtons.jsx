@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Collapsible from 'react-collapsible';
 
 import './NewGameButtons.scss';
@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
 import { ReactComponent as Wheel } from './../../assets/Group_3.svg';
+import { ReactComponent as ArrowToggle } from './../../assets/arrowToggle.svg';
 
 export default function NewGameButtons({
   handleSelectMode,
@@ -19,10 +20,16 @@ export default function NewGameButtons({
           <Collapsible
             triggerClassName="collapsible-memory"
             triggerOpenedClassName="collapsible-memory"
-            trigger="Colour Memory"
+            trigger={
+              <h2>
+                <Wheel />
+                Memory <ArrowToggle />
+              </h2>
+            }
+            open={true}
           >
             <div className="memory">
-              <h2>Memory</h2>
+              <h3>Memory</h3>
               <Button
                 dataKey="gamemode"
                 label="H"
@@ -48,14 +55,19 @@ export default function NewGameButtons({
           <Collapsible
             triggerClassName="collapsible-harmonies"
             triggerOpenedClassName="collapsible-harmonies"
-            trigger="Colour Harmonies"
+            trigger={
+              <h2>
+                <Wheel />
+                Harmony <ArrowToggle />
+              </h2>
+            }
             lazyRender={true}
           >
             <div className="complement">
-              <h2>
+              <h3>
                 <Wheel />
                 <span>Complement</span>
-              </h2>
+              </h3>
               <Button
                 dataKey="gamemode"
                 data="CompHue"
@@ -77,10 +89,10 @@ export default function NewGameButtons({
             </div>
 
             <div className="split-complement">
-              <h2>
+              <h3>
                 <Wheel />
                 <span>Split-Complement</span>
-              </h2>
+              </h3>
               <Button
                 dataKey="gamemode"
                 data="SCompHue"
@@ -102,10 +114,10 @@ export default function NewGameButtons({
             </div>
 
             <div className="triad">
-              <h2>
+              <h3>
                 <Wheel />
                 <span>Triad</span>
-              </h2>
+              </h3>
               <Button
                 dataKey="gamemode"
                 data="TriadHue"
@@ -127,10 +139,10 @@ export default function NewGameButtons({
             </div>
 
             <div className="tetrad">
-              <h2>
+              <h3>
                 <Wheel />
                 <span>Tetrad</span>
-              </h2>
+              </h3>
               <Button
                 dataKey="gamemode"
                 data="TetradHue"
@@ -155,7 +167,7 @@ export default function NewGameButtons({
       </ul>
 
       {/* custom game with checkbox to choose which modes to include */}
-      <div>
+      <div className="user-options">
         <Checkbox
           label={'Colour preview *'}
           handleChange={handleToggleUserPrefPreview}

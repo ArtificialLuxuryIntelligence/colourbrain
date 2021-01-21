@@ -1,3 +1,5 @@
+@import './../../styles/variables.scss';
+
 .game-container {
   // min-height: 90vh;
   .back-button-container {
@@ -12,7 +14,7 @@
   // width: 100%;
   min-height: 90vh;
   padding: 2rem;
-  text-align: center;
+  // text-align: center;
   // display: flex;
   // justify-content: center;
   // align-items: center;
@@ -21,14 +23,32 @@
 //-------- Collapsible  ----------
 
 .Collapsible {
-  text-align: left;
+  // text-align: left;
   .Collapsible__trigger {
-    font-size: 3rem;
     cursor: pointer;
-    text-align: left;
+    // text-align: left;
+    h2 {
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      svg {
+        transition: ease 0.4s;
+        margin: 0 2rem;
+        path {
+          fill: hsl(30, 50%, 50%);
+        }
+        width: 1em;
+        height: 1em;
+      }
+    }
+    &.is-open {
+      svg {
+        transform: rotate(-180deg);
+      }
+    }
   }
   .Collapsible__contentOuter {
-    text-align: center;
+    // text-align: center;
   }
 }
 
