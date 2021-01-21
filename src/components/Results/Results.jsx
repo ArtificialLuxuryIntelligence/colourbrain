@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import tinycolor from 'tinycolor2';
 import { calculateTotalScore, calculateScore } from './../../tools/scoring';
+import AnimatedCounter from './../AnimatedCounter/AnimatedCounter';
+
 import { gamemodeMap } from './../../tools/gameModeMaps';
 import './Results.scss';
 
@@ -24,7 +26,10 @@ export default function Results({
   return (
     <div className="results">
       <h3>{readablegamemode}</h3>
-      <h3> Score : {totalScore} %</h3>
+      <h3>
+        <span>Score : </span>
+        <AnimatedCounter value={totalScore} />
+      </h3>
       <Button label="Restart" handleClick={handleRestartGame} />
       <Button label="Home" handleClick={handleBackToStart} />
 

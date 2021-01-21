@@ -171,15 +171,16 @@ export default function NewGameButtons({
 
       {/* custom game with checkbox to choose which modes to include */}
       <div className="user-options">
+        <h4>Stuck? </h4>
         <Checkbox
-          label={'Colour preview *'}
+          label={'Colour preview '}
           handleChange={handleToggleUserPrefPreview}
           checked={userPreferencePreview}
         />
         <div>
           <small>
-            * Stuck? Lets you preview the colour. (Score don't contribute to
-            highscores. Doesn't apply to memory games).
+            Lets you preview the colour. (Score don't contribute to highscores.
+            Doesn't apply to memory games).
           </small>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function CompareColors({
     <div className="compare-colors">
       {/* <h4>{score}%</h4> */}
       <h4>
-        <AnimatedCounter value={score} />{' '}
+        <AnimatedCounter value={score} />
       </h4>
 
       <div className="round-group">
