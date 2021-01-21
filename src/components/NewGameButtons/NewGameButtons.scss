@@ -39,6 +39,35 @@
     }
   }
 
+  // --------------SVG animations
+
+  .memory {
+    path {
+      @for $x from 1 through 12 {
+        &:nth-child(#{$x}) {
+          animation: segment-delay 5s ease-in-out (1s * 5/12 * ($x))+1s infinite,
+            fade-in 1s ease ($x) * 50ms forwards;
+
+          // animation-delay: 50ms * ($x);
+          fill: hsl(($x) * 30, 50%, 50%);
+        }
+      }
+
+      // &:nth-child(3) {
+      //   fill: hsl(3 * 30, 50%, 50%);
+      //   // opacity: 1;
+      //   animation: segment 1s ease-in-out 1s infinite alternate,
+      //     fade-in 1s ease 3 * 50ms forwards;
+      // }
+
+      // &:nth-child(9) {
+      //   fill: hsl(9 * 30, 50%, 50%);
+      //   animation: segment 1s ease-in-out 1s infinite alternate,
+      //     fade-in 1s ease 9 * 50ms forwards;
+      // }
+    }
+  }
+
   .complement {
     path {
       &:nth-child(3) {
@@ -124,9 +153,35 @@
     }
   }
 
-  .user-options {
-    margin-top: 10rem;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
+
+  @keyframes segment {
+    from {
+      transform: scale(0.95);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+  @keyframes segment-delay {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.2);
+    }
+    60% {
+      transform: scale(1);
+    }
+  }
+
   ///// Collapsible
 
   .Collapsible {
@@ -148,20 +203,10 @@
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+// -----------------------------------------------------------------
+
+.user-options {
+  margin-top: 10rem;
 }
 
-@keyframes segment {
-  from {
-    transform: scale(0.95);
-  }
-  to {
-    transform: scale(1.2);
-  }
-}
+// -----------------------------------------------------------------

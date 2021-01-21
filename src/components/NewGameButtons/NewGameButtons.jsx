@@ -29,7 +29,10 @@ export default function NewGameButtons({
             open={true}
           >
             <div className="memory">
-              <h3>Memory</h3>
+              <h3>
+                <Wheel />
+                Memory
+              </h3>
               <Button
                 dataKey="gamemode"
                 label="H"
