@@ -38,13 +38,14 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
         <main>
-          <Switch>
-            <AnimatePresence exitBeforeEnter>
+          <AnimatePresence exitBeforeEnter>
+            <Switch key={'switch'}>
               <Route key="faq" path="/FAQ">
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7 }}
                 >
                   <FAQ />
                 </motion.div>
@@ -54,6 +55,7 @@ function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7 }}
                 >
                   <About />
                 </motion.div>
@@ -63,6 +65,7 @@ function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7 }}
                 >
                   <Game />
                 </motion.div>
@@ -73,12 +76,13 @@ function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7 }}
                 >
                   <Home />
                 </motion.div>
               </Route>
-            </AnimatePresence>
-          </Switch>
+            </Switch>
+          </AnimatePresence>
         </main>
       </Router>
     </div>

@@ -7,9 +7,22 @@ export default function Nav({ navActive, setNavActive }) {
   };
 
   return (
-    <nav className={navActive ? 'nav-active' : ''}>
-      <span onClick={handleToggleNav} className="nav-toggle">
-        🎨
+    <nav
+      className={navActive ? 'nav-active' : ''}
+      onMouseLeave={(e) => setNavActive(false)}
+    >
+      <span
+        onTouchStart={handleToggleNav}
+        onMouseEnter={(e) => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+          setNavActive(true);
+        }}
+        className="nav-toggle"
+      >
+        menu
       </span>
       <ul>
         <li>

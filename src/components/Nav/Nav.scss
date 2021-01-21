@@ -2,10 +2,15 @@ $white: #d7d3cb;
 $black: #282c34;
 
 $height: 80px;
+$open-height: $height * 3;
 //menu bubble radius
 $radius: 140px;
 
 nav {
+  height: $height;
+  width: $radius * 1.5;
+  transition: all 0.2s ease;
+
   // position: absolute;
   // top: 0;
   // right: 0;
@@ -21,7 +26,9 @@ nav {
   .nav-toggle {
     z-index: 2;
     cursor: pointer;
-
+    // position: absolute;
+    // top: 0;
+    // right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +54,7 @@ nav {
     li {
       font-size: 1rem;
       opacity: 0;
-      transition: 0.3s ease-in-out;
+      transition: 0.4s ease-in-out;
       position: absolute;
       border-radius: 50%;
       box-sizing: border-box;
@@ -78,6 +85,16 @@ nav {
 }
 
 .nav-active {
+  height: $height * 3;
+  transition: all 0.75s ease;
+  .nav-toggle {
+    opacity: 0;
+    // padding: $height $height $radius $radius;
+    // pointer-events: none;
+    a {
+      // z-index: 4;
+    }
+  }
   ul {
     li {
       opacity: 1;

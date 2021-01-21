@@ -47,7 +47,7 @@
     path {
       @for $x from 1 through 12 {
         &:nth-child(#{$x}) {
-          animation: segment-delay 5s ease-in-out (1s * 5/12 * ($x))+1s infinite,
+          animation: segment-delay 5s ease-in-out (1s * 5/12 * ($x)) infinite,
             fade-in 1s ease ($x) * 50ms forwards;
 
           // animation-delay: 50ms * ($x);

@@ -20,13 +20,14 @@ export default function NewGameButtons({
           <Collapsible
             triggerClassName="collapsible-memory"
             triggerOpenedClassName="collapsible-memory"
+            lazyRender={true}
             trigger={
               <h2>
                 <Wheel />
                 Memory <ArrowToggle />
               </h2>
             }
-            open={true}
+            // open={true}
           >
             <div className="memory">
               <h3>
