@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <header className="header">
+        <header className={navActive ? 'header header-nav-active' : ' header '}>
           <Link to="/">
             <h1>Colour Brain</h1>
           </Link>

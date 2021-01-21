@@ -1,3 +1,4 @@
+@import './styles/variables.scss';
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -9,16 +10,17 @@
   color: white;
 }
 
+// ---------------HEADER
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   color: #282c34;
-  background-color: #d7d3cb; // inverse of app black color
+  background: #d7d3cb; // inverse of app black color
 
   min-height: 10vh;
-  transition: all 0.4s ease;
+  transition: all 0.8s ease;
 
   font-size: calc(10px + 2vmin);
 
@@ -29,6 +31,20 @@
     color: #282c34;
   }
 }
+
+.header-nav-active {
+  color: white;
+  background: linear-gradient(40deg, red, transparent),
+    linear-gradient(160deg, blue, transparent),
+    linear-gradient(280deg, green, transparent);
+  background-blend-mode: difference;
+  h1 {
+    color: $white;
+  }
+}
+
+// --------------------------MAIN
+
 main {
   > div {
     min-height: 90vh;

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
+import { ReactComponent as Wheel } from './../../assets/Group_3.svg';
+
 export default function Nav({ navActive, setNavActive }) {
   const handleToggleNav = (e) => {
     setNavActive(!navActive);
@@ -22,7 +24,7 @@ export default function Nav({ navActive, setNavActive }) {
         }}
         className="nav-toggle"
       >
-        menu
+        <Wheel />
       </span>
       <ul>
         <li>

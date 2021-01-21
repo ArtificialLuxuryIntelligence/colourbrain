@@ -1,6 +1,9 @@
 $white: #d7d3cb;
 $black: #282c34;
 
+@import './../../styles/variables.scss';
+@import './../../styles/animation.scss';
+
 $height: 80px;
 $open-height: $height * 3;
 //menu bubble radius
@@ -21,7 +24,7 @@ nav {
   // overflow: visible;
   //   justify-content: center;
   //   align-items: center;
-  background-color: transparent;
+  // background-color: transparent;
 
   .nav-toggle {
     z-index: 2;
@@ -35,32 +38,57 @@ nav {
     font-size: 2rem;
     height: $height;
     width: $height;
+    overflow: visible;
+
+    svg {
+      overflow: visible;
+      width: 70%;
+      height: 70%;
+      animation: rotate 15s linear infinite;
+      path {
+        transform-origin: center;
+        overflow: visible;
+        @for $x from 1 through 12 {
+          &:nth-child(#{$x}) {
+            animation: segment-delay 5s ease-in-out (1s * 5/12 * ($x)) infinite,
+              fade-in 1s ease ($x) * 50ms forwards;
+
+            // animation-delay: 50ms * ($x);
+            fill: hsl(($x) * 30, 50%, 50%);
+          }
+        }
+      }
+    }
   }
   ul {
     z-index: 1;
-    background-color: transparent;
+    // background-color: transparent;
     position: absolute;
     display: flex;
     flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
+
     height: $height;
     width: $height;
     padding: 0;
     margin: 0;
 
     list-style: none;
-    mix-blend-mode: exclusion;
+    // mix-blend-mode: exclusion;
+    // mix-blend-mode: darken;
+
+    // filter: invert(100%);
     li {
-      font-size: 1rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      font-weight: 500;
       opacity: 0;
       transition: 0.4s ease-in-out;
       position: absolute;
       border-radius: 50%;
       box-sizing: border-box;
-      background: black; // filter: invert(100);
+      background: white;
+      // color: white;
       // background: hsl(30, 80%, 50%);
-
       a {
         display: flex;
         justify-content: center;
@@ -70,15 +98,12 @@ nav {
         width: $height;
         height: $height;
         text-align: center;
-        color: $white;
-        border: 2px solid $white;
+        // color: white;
+        border: 2px solid white;
         border-radius: 50%;
 
-        background: transparent;
+        // background: transparent;
         text-decoration: none;
-      }
-      &:hover {
-        filter: invert(100%);
       }
     }
   }
@@ -97,7 +122,16 @@ nav {
   }
   ul {
     li {
-      opacity: 1;
+      opacity: 0.8;
+      &:hover {
+        opacity: 1;
+
+        // filter: invert(100%);
+        // mix-blend-mode: exclusion;
+        // background-blend-mode: exclusion;
+        // background-color: black;
+        // background-color: transparent;
+      }
 
       &:nth-child(1) {
         // transform: translateX(-$radius);
