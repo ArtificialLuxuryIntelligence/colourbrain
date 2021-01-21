@@ -46,6 +46,7 @@ function App() {
             <Route path="/play">
               <Game />
             </Route>
+            
             <Route path="/">
               <Home />
             </Route>

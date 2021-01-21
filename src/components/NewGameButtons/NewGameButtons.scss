@@ -4,4 +4,134 @@
     height: 80px;
     border-radius: 50%;
   }
+
+  h2 {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-around;
+    align-items: center;
+    svg {
+      overflow: visible;
+      margin: 0 2rem;
+      max-height: 10vh;
+      width: 130px;
+      height: 130px;
+      path {
+        animation: fade-in 1s ease forwards;
+        opacity: 0;
+        position: absolute;
+        transform-origin: center;
+
+        @for $x from 1 through 12 {
+          &:nth-child(#{$x}) {
+            animation-delay: 50ms * ($x);
+            fill: hsl(($x) * 30, 50%, 50%);
+          }
+        }
+      }
+    }
+  }
+
+  .complement {
+    path {
+      &:nth-child(3) {
+        fill: hsl(3 * 30, 50%, 50%);
+        // opacity: 1;
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 3 * 50ms forwards;
+      }
+
+      &:nth-child(9) {
+        fill: hsl(9 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 9 * 50ms forwards;
+      }
+    }
+  }
+  .split-complement {
+    path {
+      &:nth-child(3) {
+        fill: hsl(3 * 30, 50%, 50%);
+        // opacity: 1;
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 3 * 50ms forwards;
+      }
+
+      &:nth-child(8) {
+        fill: hsl(8 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 8 * 50ms forwards;
+      }
+      &:nth-child(10) {
+        fill: hsl(10 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 10 * 50ms forwards;
+      }
+    }
+  }
+  .triad {
+    path {
+      &:nth-child(3) {
+        fill: hsl(3 * 30, 50%, 50%);
+        // opacity: 1;
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 3 * 50ms forwards;
+      }
+
+      &:nth-child(7) {
+        fill: hsl(7 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 7 * 50ms forwards;
+      }
+      &:nth-child(11) {
+        fill: hsl(11 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 11 * 50ms forwards;
+      }
+    }
+  }
+  .tetrad {
+    path {
+      &:nth-child(3) {
+        fill: hsl(3 * 30, 50%, 50%);
+        // opacity: 1;
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 3 * 50ms forwards;
+      }
+
+      &:nth-child(5) {
+        fill: hsl(5 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 5 * 50ms forwards;
+      }
+      &:nth-child(9) {
+        fill: hsl(9 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 9 * 50ms forwards;
+      }
+      &:nth-child(11) {
+        fill: hsl(11 * 30, 50%, 50%);
+        animation: segment 1s ease-in-out 1s infinite alternate,
+          fade-in 1s ease 11 * 50ms forwards;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes segment {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }

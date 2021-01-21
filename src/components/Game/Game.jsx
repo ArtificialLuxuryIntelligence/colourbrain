@@ -15,6 +15,8 @@ import Results from '../Results/Results';
 import CompareColors from '../CompareColors/CompareColors';
 import NewGameButtons from '../NewGameButtons/NewGameButtons';
 import Highscores from '../Highscores/Highscores';
+import Collapsible from 'react-collapsible';
+import { Link } from 'react-router-dom';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
@@ -218,13 +220,13 @@ export default function Game() {
             userPreferencePreview={userPreferencePreview}
           />
 
-          <div>
-            <small>
-              * Stuck? Lets you preview the colour. (Score don't contribute to
-              highscores. Doesn't apply to memory games).
-            </small>
-          </div>
-          <Highscores highscores={highscores} />
+          <Collapsible
+            triggerClassName="collapsible-highscores"
+            triggerOpenClassName="collapsible-highscores"
+            trigger="Highscores"
+          >
+            <Highscores highscores={highscores} />
+          </Collapsible>
         </div>
       )}
       {roundStage === 'preview' && (

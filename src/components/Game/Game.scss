@@ -18,15 +18,26 @@
   // align-items: center;
 }
 
-// .round-group {
-//   margin: 2rem;
-//   display: flex;
-//   justify-content: center;
+//-------- Collapsible  ----------
 
-//   .picked,
-//   .target {
-//     margin: 0 1rem;
-//     width: 20vw;
-//     height: 10vw;
-//   }
+.Collapsible {
+  text-align: left;
+  .Collapsible__trigger {
+    font-size: 3rem;
+    cursor: pointer;
+    text-align: left;
+  }
+  .Collapsible__contentOuter {
+    text-align: center;
+  }
+}
+
+// .collapsible-memory {
+//   font-size: 3rem;
+// }
+// .collapsible-harmonies {
+//   font-size: 3rem;
+// }
+// .collapsible-highscores {
+//   font-size: 3rem;
 // }

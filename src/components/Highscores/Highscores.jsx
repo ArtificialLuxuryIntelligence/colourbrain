@@ -5,7 +5,6 @@ import './Highscores.scss';
 export default function Highscores({ highscores }) {
   return (
     <div className="highscores">
-      <h2>My Highscores</h2>
       <table>
         <tbody>
           <tr>
