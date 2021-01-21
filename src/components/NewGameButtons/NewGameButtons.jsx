@@ -3,6 +3,7 @@ import Collapsible from 'react-collapsible';
 
 import './NewGameButtons.scss';
 import Button from '../Button/Button';
+import SVGButton from '../SVGButton/SVGButton';
 import Checkbox from '../Checkbox/Checkbox';
 
 import { ReactComponent as Wheel } from './../../assets/Group_3.svg';
@@ -37,27 +38,29 @@ export default function NewGameButtons({
                 <Wheel />
                 Memory
               </h3>
-              <Button
-                dataKey="gamemode"
-                // label="H"
-                Icon={Ax1}
-                data="Hue"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                // label="SL"
-                Icon={Ax2}
-                data="SatLum"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="HSL"
-                // label="HSL"
-                Icon={Ax3}
-                handleClick={handleSelectMode}
-              />
+              <div className="btn-cont">
+                <SVGButton
+                  dataKey="gamemode"
+                  label="Hue"
+                  Icon={Ax1}
+                  data="Hue"
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  data="SatLum"
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="HSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                />
+              </div>
             </div>
           </Collapsible>
         </li>
@@ -78,24 +81,29 @@ export default function NewGameButtons({
                 <Wheel />
                 <span>Complement</span>
               </h3>
-              <Button
-                dataKey="gamemode"
-                data="CompHue"
-                label="H"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="CompSL"
-                label="SL"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="CompHSL"
-                label="HSL"
-                handleClick={handleSelectMode}
-              />
+              <div className="btn-cont">
+                <SVGButton
+                  dataKey="gamemode"
+                  data="CompHue"
+                  label="Hue"
+                  Icon={Ax1}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="CompSL"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="CompHSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                />
+              </div>
             </div>
 
             <div className="split-complement">
@@ -103,24 +111,29 @@ export default function NewGameButtons({
                 <Wheel />
                 <span>Split-Complement</span>
               </h3>
-              <Button
-                dataKey="gamemode"
-                data="SCompHue"
-                label="H"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="SCompSL"
-                label="SL"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="SCompHSL"
-                label="HSL"
-                handleClick={handleSelectMode}
-              />
+              <div className="btn-cont">
+                <SVGButton
+                  dataKey="gamemode"
+                  data="SCompHue"
+                  label="Hue"
+                  Icon={Ax1}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="SCompSL"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="SCompHSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                />
+              </div>
             </div>
 
             <div className="triad">
@@ -128,24 +141,29 @@ export default function NewGameButtons({
                 <Wheel />
                 <span>Triad</span>
               </h3>
-              <Button
-                dataKey="gamemode"
-                data="TriadHue"
-                label="H"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="TriadSL"
-                label="SL"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="TriadHSL"
-                label="HSL"
-                handleClick={handleSelectMode}
-              />
+              <div className="btn-cont">
+                <SVGButton
+                  dataKey="gamemode"
+                  data="TriadHue"
+                  label="Hue"
+                  Icon={Ax1}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="TriadSL"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="TriadHSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                />
+              </div>
             </div>
 
             <div className="tetrad">
@@ -153,24 +171,30 @@ export default function NewGameButtons({
                 <Wheel />
                 <span>Tetrad</span>
               </h3>
-              <Button
-                dataKey="gamemode"
-                data="TetradHue"
-                label="H"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="TetradSL"
-                label="SL"
-                handleClick={handleSelectMode}
-              />
-              <Button
-                dataKey="gamemode"
-                data="TetradHSL"
-                label="HSL"
-                handleClick={handleSelectMode}
-              />
+              <div className="btn-cont">
+                <SVGButton
+                  dataKey="gamemode"
+                  data="TetradHue"
+                  label="Hue"
+                  Icon={Ax1}
+                  handleClick={handleSelectMode}
+                />
+
+                <SVGButton
+                  dataKey="gamemode"
+                  data="TetradSL"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  handleClick={handleSelectMode}
+                />
+                <SVGButton
+                  dataKey="gamemode"
+                  data="TetradHSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                />
+              </div>
             </div>
           </Collapsible>
         </li>
