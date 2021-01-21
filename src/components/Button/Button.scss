@@ -19,9 +19,13 @@ $btn-col-2: $white;
 .button {
   cursor: pointer;
   outline: none;
-  // &.outline {
   position: relative;
-  // z-index: 3;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // display: grid;
+  // place-content: center;
   background: transparent;
   background: $btn-col-2;
 
@@ -46,5 +50,44 @@ $btn-col-2: $white;
   }
   &:active {
     // border-radius: 22px;
+  }
+}
+
+.svg-button {
+  display: inline-grid;
+  place-content: center;
+  // padding: 0.2em;
+  width: 100px;
+  height: 100px;
+  svg {
+    width: 70px;
+    height: 70px;
+    pointer-events: none; // need for the data attribute on btn to work correctly
+    path,
+    circle {
+      transition: all 0.8s;
+
+      animation: none !important;
+
+      // fill: none !important;
+      fill: $black;
+    }
+  }
+
+  &:hover {
+    border-radius: 4px;
+    background: linear-gradient(40deg, red, transparent),
+      linear-gradient(160deg, blue, transparent),
+      linear-gradient(280deg, green, transparent);
+    background-blend-mode: difference;
+    svg {
+      path {
+        stroke: white;
+      }
+      circle {
+        // fill: hsl(30, 50, 50);
+        fill: white;
+      }
+    }
   }
 }

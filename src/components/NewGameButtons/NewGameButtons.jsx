@@ -7,6 +7,9 @@ import Checkbox from '../Checkbox/Checkbox';
 
 import { ReactComponent as Wheel } from './../../assets/Group_3.svg';
 import { ReactComponent as ArrowToggle } from './../../assets/arrowToggle.svg';
+import { ReactComponent as Ax1 } from './../../assets/ax-1.svg';
+import { ReactComponent as Ax2 } from './../../assets/ax-2.svg';
+import { ReactComponent as Ax3 } from './../../assets/ax-3.svg';
 
 export default function NewGameButtons({
   handleSelectMode,
@@ -27,7 +30,7 @@ export default function NewGameButtons({
                 Memory <ArrowToggle />
               </h2>
             }
-            // open={true}
+            open={true}
           >
             <div className="memory">
               <h3>
@@ -36,20 +39,23 @@ export default function NewGameButtons({
               </h3>
               <Button
                 dataKey="gamemode"
-                label="H"
+                // label="H"
+                Icon={Ax1}
                 data="Hue"
                 handleClick={handleSelectMode}
               />
               <Button
                 dataKey="gamemode"
-                label="SL"
+                // label="SL"
+                Icon={Ax2}
                 data="SatLum"
                 handleClick={handleSelectMode}
               />
               <Button
                 dataKey="gamemode"
                 data="HSL"
-                label="HSL"
+                // label="HSL"
+                Icon={Ax3}
                 handleClick={handleSelectMode}
               />
             </div>
