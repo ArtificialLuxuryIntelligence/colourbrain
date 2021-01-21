@@ -1,5 +1,6 @@
 import React from 'react';
 import Collapsible from 'react-collapsible';
+
 import './NewGameButtons.scss';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
@@ -48,7 +49,7 @@ export default function NewGameButtons({
             triggerClassName="collapsible-harmonies"
             triggerOpenedClassName="collapsible-harmonies"
             trigger="Colour Harmonies"
-            lazyRender="true"
+            lazyRender={true}
           >
             <div className="complement">
               <h2>

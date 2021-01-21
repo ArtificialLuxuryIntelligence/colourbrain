@@ -1,6 +1,8 @@
 import './App.scss';
 import { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import Home from './components/Home/Home';
 import Game from './components/Game/Game';
 import FAQ from './components/FAQ/FAQ';
@@ -37,19 +39,45 @@ function App() {
           renders the first one that matches the current URL. */}
         <main>
           <Switch>
-            <Route path="/FAQ">
-              <FAQ />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/play">
-              <Game />
-            </Route>
-            
-            <Route path="/">
-              <Home />
-            </Route>
+            <AnimatePresence exitBeforeEnter>
+              <Route key="faq" path="/FAQ">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <FAQ />
+                </motion.div>
+              </Route>
+              <Route key="about" path="/about">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <About />
+                </motion.div>
+              </Route>
+              <Route key="game" path="/play">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Game />
+                </motion.div>
+              </Route>
+
+              <Route key="home" path="/">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Home />
+                </motion.div>
+              </Route>
+            </AnimatePresence>
           </Switch>
         </main>
       </Router>

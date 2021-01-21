@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import tinycolor from 'tinycolor2';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import {
   randomRGBA,
   randomRGBA_matchH,
@@ -20,8 +22,8 @@ import { Link } from 'react-router-dom';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
-const totalRounds = 5;
-const flashTime = 1200;
+const totalRounds = 2;
+const flashTime = 2200; // take into account animation length of previous page unmount
 
 export default function Game() {
   const [roundColors, setRoundColors] = useState(generateRounds(totalRounds));
@@ -67,7 +69,6 @@ export default function Game() {
         case 'TriadHue':
         case 'TetradHue':
           setPickedColor(randomRGBA_matchSL(targetColor));
-
           break;
         case 'SatLum':
         case 'SCompSL':
@@ -132,10 +133,9 @@ export default function Game() {
 
   // Event handlers
   const handlePickColor = (e) => {
-    const targetColor = roundColors[round - 1].targetColor;
-
-    setResults([...results, { picked: pickedColor, target: targetColor }]);
     setRoundStage('compare');
+    const targetColor = roundColors[round - 1].targetColor;
+    setResults([...results, { picked: pickedColor, target: targetColor }]);
   };
 
   const handleNextRound = (e) => {
@@ -158,6 +158,7 @@ export default function Game() {
   };
 
   const handleBackToStart = (e) => {
+    console.log('back to start');
     setGameActive(false);
     // clearTimeout(timer.current);
     setRoundStage('new');
@@ -205,69 +206,121 @@ export default function Game() {
 
   return (
     <div className="game-container">
-      {roundStage !== 'new' &&
-        roundStage !== 'preview' &&
-        roundStage !== 'results' && (
-          <div className="back-button-container">
-            <Button label="Back" handleClick={handleBackToStart} />
-          </div>
+      <AnimatePresence exitBeforeEnter>
+        {roundStage !== 'new' &&
+          roundStage !== 'preview' &&
+          roundStage !== 'results' && (
+            <motion.div
+              key="bbc"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="back-button-container"
+            >
+              <Button label="Back" handleClick={handleBackToStart} />
+            </motion.div>
+          )}
+
+        {roundStage === 'new' && (
+          <motion.div
+            key="ng"
+            className="new-game"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <NewGameButtons
+              key={'buttons'}
+              handleSelectMode={handleSelectMode}
+              handleToggleUserPrefPreview={handleToggleUserPrefPreview}
+              userPreferencePreview={userPreferencePreview}
+            />
+
+            <Collapsible
+              key={'collapsible'}
+              triggerClassName="collapsible-highscores"
+              triggerOpenClassName="collapsible-highscores"
+              trigger="Highscores"
+            >
+              <Highscores highscores={highscores} />
+            </Collapsible>
+          </motion.div>
         )}
-      {roundStage === 'new' && (
-        <div className="new-game">
-          <NewGameButtons
-            handleSelectMode={handleSelectMode}
-            handleToggleUserPrefPreview={handleToggleUserPrefPreview}
-            userPreferencePreview={userPreferencePreview}
-          />
 
-          <Collapsible
-            triggerClassName="collapsible-highscores"
-            triggerOpenClassName="collapsible-highscores"
-            trigger="Highscores"
+        {roundStage === 'pick' && (
+          <motion.div
+            // no animating in if there has been a preview first - looks jarring otherwise
+            initial={preview ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            // initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <Highscores highscores={highscores} />
-          </Collapsible>
-        </div>
-      )}
+            <ColorPicker
+              key={'colpick'}
+              pickedColor={pickedColor}
+              setPickedColor={setPickedColor}
+              handlePickColor={handlePickColor}
+              gamemode={gamemode}
+              roundColors={roundColors[round - 1]}
+            >
+              <h1>Round {round}</h1>
+            </ColorPicker>
+          </motion.div>
+        )}
+
+        {roundStage === 'compare' && (
+          <motion.div
+            key="cmpr"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <CompareColors
+              key={'cmpcol'}
+              round={round}
+              roundColors={roundColors}
+              totalRounds={totalRounds}
+              targetColor={roundColors[round - 1].targetColor}
+              pickedColor={pickedColor}
+              handleNextRound={handleNextRound}
+              handleShowResults={handleShowResults}
+            />
+          </motion.div>
+        )}
+
+        {roundStage === 'results' && (
+          <motion.div
+            key="reslts"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Results
+              key="resutls"
+              results={results}
+              gamemode={gamemode}
+              roundColorNames={roundColorNames}
+              roundColors={roundColors}
+              handleRestartGame={handleRestartGame}
+              handleBackToStart={handleBackToStart}
+              handleUpdateHighscores={handleUpdateHighscores}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {roundStage === 'preview' && (
-        <RoundColor color={roundColors[round - 1].targetColor} />
-      )}
-      {roundStage === 'pick' && (
-        <>
-          <ColorPicker
-            pickedColor={pickedColor}
-            setPickedColor={setPickedColor}
-            handlePickColor={handlePickColor}
-            gamemode={gamemode}
-            roundColors={roundColors[round - 1]}
-          >
-            <h1>Round {round}</h1>
-          </ColorPicker>
-        </>
-      )}
-
-      {roundStage === 'compare' && (
-        <CompareColors
-          round={round}
-          roundColors={roundColors}
-          totalRounds={totalRounds}
-          targetColor={roundColors[round - 1].targetColor}
-          pickedColor={pickedColor}
-          handleNextRound={handleNextRound}
-          handleShowResults={handleShowResults}
-        />
-      )}
-
-      {roundStage === 'results' && (
-        <Results
-          results={results}
-          gamemode={gamemode}
-          roundColorNames={roundColorNames}
-          roundColors={roundColors}
-          handleRestartGame={handleRestartGame}
-          handleBackToStart={handleBackToStart}
-          handleUpdateHighscores={handleUpdateHighscores}
-        />
+        // no exit animation (hence out of animatePresence component)
+        // also for some reason putting it afterwards stops a Flash on screen when preview is off 🤷‍♂️
+        <motion.div
+          key={'prev'}
+          initial={{ opacity: 1, clipPath: `circle(5%)` }}
+          transition={{ duration: 1 }}
+          animate={{ opacity: 1, clipPath: `circle(75%)` }}
+        >
+          <RoundColor key="rndcol" color={roundColors[round - 1].targetColor} />
+        </motion.div>
       )}
     </div>
   );
