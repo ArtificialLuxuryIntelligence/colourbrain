@@ -14,7 +14,7 @@ const calculateTotalScore = (results) => {
     return score + acc;
   }, 0);
 
-  return Math.round(total / results.length);
+  return Math.ceil(total / results.length);
 };
 
 export { calculateScore, calculateTotalScore };

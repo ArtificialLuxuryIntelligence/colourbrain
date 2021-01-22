@@ -8,6 +8,8 @@ import {
   randomRGBA_matchSL,
   randomRGBA_matchHS,
   generateRounds,
+  grayscaleColorRange,
+  shadeColorRange,
 } from './../../tools/colorTools';
 import './Game.scss';
 import ColorPicker from '../ColorPicker/ColorPicker';
@@ -20,6 +22,14 @@ import NewGameButtons from '../NewGameButtons/NewGameButtons';
 import Highscores from '../Highscores/Highscores';
 import Collapsible from 'react-collapsible';
 import { Link } from 'react-router-dom';
+
+///
+// let a = grayscaleColorRange(100);
+let a = shadeColorRange(100, { r: 200, g: 100, b: 40, a: 1 });
+
+console.log('frar', a);
+
+///
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
@@ -79,9 +89,10 @@ export default function Game() {
           setPickedColor(randomRGBA_matchH(targetColor));
           break;
         case 'GSLum':
-          console.log(targetColor);
+          // random colour from grid@
+          // to do
+          //(this works ok though..)
           let p = randomRGBA_matchHS(targetColor);
-          console.log(p);
           setPickedColor(p);
 
           break;
@@ -103,7 +114,8 @@ export default function Game() {
   }, [round]);
 
   useEffect(() => {
-    isLoaded.current && handleRestartGame();
+    isLoaded.current && gameActive && handleRestartGame();
+
     return () => {
       // cleanup;
     };
@@ -166,7 +178,7 @@ export default function Game() {
 
   const handleRestartGame = (e) => {
     console.log('restarting...');
-    setGameActive(true);
+
     console.log(gamemode);
     // if (gamemode === 'GSLum') {
     // console.log('gsgsg');
@@ -183,7 +195,7 @@ export default function Game() {
   const handleBackToStart = (e) => {
     console.log('back to start');
     setGameActive(false);
-    
+    setgamemode(null);
     // clearTimeout(timer.current);
     setRoundStage('new');
     setRound(totalRounds);
@@ -191,6 +203,7 @@ export default function Game() {
 
   const handleSelectMode = (e) => {
     let mode = e.target.dataset.gamemode;
+    setGameActive(true);
     setgamemode(mode);
     console.log(mode);
 
@@ -287,6 +300,10 @@ export default function Game() {
               handlePickColor={handlePickColor}
               gamemode={gamemode}
               roundColors={roundColors[round - 1]}
+              gridColors={shadeColorRange(
+                100,
+                roundColors[round - 1].targetColor
+              )}
             >
               <h1>Round {round}</h1>
             </ColorPicker>

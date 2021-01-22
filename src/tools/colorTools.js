@@ -141,6 +141,41 @@ const generateRounds = (rounds, grayScale = false) => {
   return res;
 };
 
+// make an array from white to black
+const grayscaleColorRange = (n) => {
+  let res = [];
+  let inc = 255 / (n + 1);
+  let v = 0;
+  for (let i = 0; i < n; i++) {
+    res.push({ r: v, g: v, b: v });
+    // res.push(`rgb(${v},${v},${v})`);
+    v += inc;
+  }
+  return res;
+};
+
+// makes array of single colour in all shades (n divisions)
+const shadeColorRange = (n, color) => {
+  let res = [];
+  let hsl = tinycolor(color).toHsl();
+  let { h, s, l } = hsl;
+  let inc = 1 / (n + 1);
+  // let val = 0;
+  let val = l % inc;
+  for (let i = 0; i < n; i++) {
+    res.push(tinycolor({ h, s, l: val }).toRgb());
+    // res.push(`rgb(${v},${v},${v})`);
+    val += inc;
+  }
+
+  // start from lumin value:
+  // go down to zero
+  // while()
+
+  // go up to 1
+  return res;
+};
+
 export {
   colorDifference,
   randomRGBA,
@@ -149,4 +184,6 @@ export {
   randomRGBA_matchSL,
   colorCombos,
   generateRounds,
+  grayscaleColorRange,
+  shadeColorRange,
 };

@@ -37,7 +37,7 @@ export default function Results({
         {results.map((round, idx) => {
           const { r, g, b } = round.picked;
 
-          const score = Math.round(calculateScore(round.picked, round.target));
+          const score = Math.ceil(calculateScore(round.picked, round.target));
           console.log(calculateScore(round.picked, round.target));
           console.log(roundColors[idx]);
 

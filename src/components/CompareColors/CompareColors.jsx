@@ -16,7 +16,7 @@ export default function CompareColors({
 }) {
   const targetCString = tinycolor.fromRatio(targetColor).toRgbString();
   const pickedCString = tinycolor.fromRatio(pickedColor).toRgbString();
-  const score = Math.round(calculateScore(targetColor, pickedColor));
+  const score = Math.ceil(calculateScore(targetColor, pickedColor));
 
   const [circleColor, setCircleColor] = useState(pickedCString);
 

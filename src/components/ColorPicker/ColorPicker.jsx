@@ -1,8 +1,10 @@
 import './ColorPicker.scss';
+import tinycolor from 'tinycolor2';
 
 import { RgbColorPicker } from 'react-colorful';
 import 'react-colorful/dist/index.css';
 import Button from './../Button/Button';
+import GridPicker from './../GridPicker/GridPicker';
 
 export default function ColorPicker({
   pickedColor,
@@ -10,13 +12,50 @@ export default function ColorPicker({
   handlePickColor,
   gamemode,
   roundColors,
+  gridColors,
 }) {
-  const { complement, grayscale, splitComplement, triad, tetrad } = roundColors;
+  const {
+    targetColor,
+    complement,
+    grayscale,
+    splitComplement,
+    triad,
+    tetrad,
+  } = roundColors;
   const { r, g, b } = pickedColor;
-  console.log(gamemode);
+
+  function renderPickerSwitch(gamemode) {
+    switch (gamemode) {
+      case 'GSLum':
+      case 'GSHue':
+        return (
+          <>
+            <GridPicker
+              color={pickedColor}
+              onChange={setPickedColor}
+              gridColors={gridColors}
+            />
+
+            <Button handleClick={handlePickColor} label="Pick" />
+          </>
+        );
+
+      default:
+        return (
+          <>
+            <RgbColorPicker color={pickedColor} onChange={setPickedColor} />
+
+            <Button handleClick={handlePickColor} label="Pick" />
+          </>
+        );
+
+        break;
+    }
+  }
 
   return (
     <div
+      key={'picker'}
       className={`color-picker gamemode-${gamemode}`}
       style={{ backgroundColor: `rgb(${r},${g},${b})` }}
     >
@@ -25,7 +64,8 @@ export default function ColorPicker({
           <div
             key={grayscale}
             className="grayscale-color"
-            style={{ backgroundColor: `${grayscale}` }}
+            // style={{ backgroundColor: `${grayscale}` }}
+            style={{ backgroundColor: `${tinycolor(targetColor).toString()}` }}
           ></div>
         )}
 
@@ -72,10 +112,7 @@ export default function ColorPicker({
           ))}
       </div>
 
-      <RgbColorPicker color={pickedColor} onChange={setPickedColor} />
-      {/* <HslColorPicker color={pickedColor} onChange={setPickedColor} /> */}
-
-      <Button handleClick={handlePickColor} label="Pick" />
+      {renderPickerSwitch(gamemode)}
     </div>
   );
 }
