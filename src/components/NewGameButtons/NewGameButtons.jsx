@@ -31,7 +31,7 @@ export default function NewGameButtons({
                 Memory <ArrowToggle />
               </h2>
             }
-            open={true}
+            // open={true}
           >
             <div className="memory">
               <h3>
