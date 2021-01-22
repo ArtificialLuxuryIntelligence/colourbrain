@@ -5,13 +5,8 @@ import 'react-colorful/dist/index.css';
 
 export default function GridPicker({ color, onChange, gridColors }) {
   return (
-    <div className="picker">
-      {/* <RgbColorPicker
-        className="picker__control"
-        color={color}
-        onChange={onChange}
-      /> */}
-      <div className="picker__swatches">
+    
+      <div className="picker">
         {gridColors.map((presetColor) => {
           const { r, g, b } = presetColor;
           return (
@@ -24,6 +19,5 @@ export default function GridPicker({ color, onChange, gridColors }) {
           );
         })}
       </div>
-    </div>
   );
 }

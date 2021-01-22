@@ -31,7 +31,7 @@ export default function ColorPicker({
     switch (gamemode) {
       case 'GSLum':
         return (
-          <div className="grid-container">
+          <div className="grid-picker-container">
             <GridPicker
               color={pickedColor}
               onChange={setPickedColor}
@@ -43,7 +43,7 @@ export default function ColorPicker({
         );
       case 'GSLumReverse':
         return (
-          <div className="grid-reverse-container">
+          <div className="grid-picker-container">
             <GridPicker
               color={pickedColor}
               onChange={setPickedColor}
