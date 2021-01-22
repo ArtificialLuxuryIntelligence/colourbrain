@@ -13,9 +13,11 @@ export default function ColorPicker({
   gamemode,
   roundColors,
   gridColors,
+  gridColorsReverse,
 }) {
   const {
     targetColor,
+    color,
     complement,
     grayscale,
     splitComplement,
@@ -23,13 +25,13 @@ export default function ColorPicker({
     tetrad,
   } = roundColors;
   const { r, g, b } = pickedColor;
+  console.log('color', color);
 
   function renderPickerSwitch(gamemode) {
     switch (gamemode) {
       case 'GSLum':
-      case 'GSHue':
         return (
-          <>
+          <div className="grid-container">
             <GridPicker
               color={pickedColor}
               onChange={setPickedColor}
@@ -37,7 +39,19 @@ export default function ColorPicker({
             />
 
             <Button handleClick={handlePickColor} label="Pick" />
-          </>
+          </div>
+        );
+      case 'GSLumReverse':
+        return (
+          <div className="grid-reverse-container">
+            <GridPicker
+              color={pickedColor}
+              onChange={setPickedColor}
+              gridColors={gridColorsReverse}
+            />
+
+            <Button handleClick={handlePickColor} label="Pick" />
+          </div>
         );
 
       default:
@@ -64,8 +78,17 @@ export default function ColorPicker({
           <div
             key={grayscale}
             className="grayscale-color"
-            // style={{ backgroundColor: `${grayscale}` }}
-            style={{ backgroundColor: `${tinycolor(targetColor).toString()}` }}
+            style={{ backgroundColor: `${grayscale}` }}
+            // style={{ backgroundColor: `${tinycolor(targetColor).toString()}` }}
+          ></div>
+        )}
+
+        {gamemode === 'GSLumReverse' && (
+          <div
+            key={grayscale}
+            className="grayscale-color"
+            style={{ backgroundColor: `${color}` }}
+            // style={{ backgroundColor: `${tinycolor(targetColor).toString()}` }}
           ></div>
         )}
 

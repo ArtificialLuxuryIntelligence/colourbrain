@@ -1,6 +1,6 @@
 import React from 'react';
 import './GridPicker.scss';
-import { RgbColorPicker } from 'react-colorful';
+// import { RgbColorPicker } from 'react-colorful';
 import 'react-colorful/dist/index.css';
 
 export default function GridPicker({ color, onChange, gridColors }) {

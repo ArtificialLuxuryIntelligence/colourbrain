@@ -1,6 +1,8 @@
 import { colorDifference } from './colorTools';
+import tinycolor from 'tinycolor2';
 
 const calculateScore = (c1, c2) => {
+
   // params rgb objects
   let diff = colorDifference(c1, c2); // 0 (same) - 100 (opposite)
   let temp = 100 - diff * 2;

@@ -89,12 +89,14 @@ export default function Game() {
           setPickedColor(randomRGBA_matchH(targetColor));
           break;
         case 'GSLum':
+        case 'GSLumReverse':
           // random colour from grid@
           // to do
           //(this works ok though..)
           let p = randomRGBA_matchHS(targetColor);
           setPickedColor(p);
-
+          // case 'GSLumReverse':
+          // setPickedColor(randomRGBAGrayscale([20, 255]));
           break;
 
         // All HSL options get a random colour
@@ -180,14 +182,14 @@ export default function Game() {
     console.log('restarting...');
 
     console.log(gamemode);
-    // if (gamemode === 'GSLum') {
-    // console.log('gsgsg');
-    // setRoundColors(generateRounds(totalRounds, true));
-    // } else {
-    // console.log('gsgsg');
-
-    setRoundColors(generateRounds(totalRounds));
-    // }
+    if (gamemode === 'GSLumReverse') {
+      console.log('restarting with reverse');
+      setRoundColors(generateRounds(totalRounds, true));
+    } else {
+      console.log('gsgsg');
+      setRoundColors(generateRounds(totalRounds));
+      //
+    }
     setRound(1);
     setResults([]);
   };
@@ -301,6 +303,10 @@ export default function Game() {
               gamemode={gamemode}
               roundColors={roundColors[round - 1]}
               gridColors={shadeColorRange(
+                100,
+                roundColors[round - 1].targetColor
+              )}
+              gridColorsReverse={grayscaleColorRange(
                 100,
                 roundColors[round - 1].targetColor
               )}

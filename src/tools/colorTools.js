@@ -113,11 +113,8 @@ const generateRounds = (rounds, grayScale = false) => {
   let r = 0;
   while (r < rounds) {
     let targetColor;
-    if (!grayScale) {
-      targetColor = randomRGBA([25, 230]);
-    } else {
-      targetColor = randomRGBAGray([25, 230]);
-    }
+
+    targetColor = randomRGBA([25, 230]);
 
     const {
       grayscale,
@@ -128,13 +125,13 @@ const generateRounds = (rounds, grayScale = false) => {
     } = colorCombos(targetColor);
 
     res.push({
-      targetColor,
+      targetColor: grayScale ? tinycolor(grayscale).toRgb() : targetColor,
+      color: tinycolor(targetColor).toString(),
       grayscale,
       complement,
       splitComplement,
       triad,
       tetrad,
-      grayscale,
     });
     r++;
   }

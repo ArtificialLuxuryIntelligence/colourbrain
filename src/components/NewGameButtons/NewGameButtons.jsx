@@ -227,9 +227,9 @@ export default function NewGameButtons({
                 />
                 {/* <SVGButton
                   dataKey="gamemode"
-                  label={'Saturation Luminance'}
+                  label={'Luminance'}
                   Icon={Ax2}
-                  data="SatLum"
+                  data="GSLumReverse"
                   handleClick={handleSelectMode}
                 /> */}
                 {/* <SVGButton
@@ -248,13 +248,13 @@ export default function NewGameButtons({
                 Greyscale - Colour
               </h3>
               <div className="btn-cont">
-                {/* <SVGButton
+                <SVGButton
                   dataKey="gamemode"
                   label="Luminance"
                   Icon={Ax1}
-                  data="GSHue"
+                  data="GSLumReverse"
                   handleClick={handleSelectMode}
-                /> */}
+                />
                 {/* <SVGButton
                   dataKey="gamemode"
                   label={'Saturation Luminance'}
