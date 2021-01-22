@@ -19,7 +19,7 @@
 
 // ------------------- responsive
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .svg-btn-wrapper {
     &:hover {
       span {

@@ -1,7 +1,9 @@
 @import './../../styles/variables.scss';
 
 .game-container {
-  // min-height: 90vh;
+  min-height: 100vh;
+  position: relative;
+
   .back-button-container {
     z-index: 4;
     position: absolute;

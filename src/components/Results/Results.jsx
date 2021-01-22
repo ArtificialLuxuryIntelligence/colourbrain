@@ -30,8 +30,6 @@ export default function Results({
         <span>Score : </span>
         <AnimatedCounter value={totalScore} />
       </h3>
-      <Button label="Restart" handleClick={handleRestartGame} />
-      <Button label="Home" handleClick={handleBackToStart} />
 
       <ul>
         {results.map((round, idx) => {
@@ -60,6 +58,9 @@ export default function Results({
           );
         })}
       </ul>
+
+      <Button label="Restart" handleClick={handleRestartGame} />
+      <Button label="Home" handleClick={handleBackToStart} />
     </div>
   );
 }
