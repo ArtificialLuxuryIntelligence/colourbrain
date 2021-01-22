@@ -11,6 +11,7 @@ import { ReactComponent as ArrowToggle } from './../../assets/arrowToggle.svg';
 import { ReactComponent as Ax1 } from './../../assets/ax-1.svg';
 import { ReactComponent as Ax2 } from './../../assets/ax-2.svg';
 import { ReactComponent as Ax3 } from './../../assets/ax-3.svg';
+import { Link } from 'react-router-dom';
 
 export default function NewGameButtons({
   handleSelectMode,
@@ -28,7 +29,7 @@ export default function NewGameButtons({
             trigger={
               <h2>
                 <Wheel />
-                Memory <ArrowToggle />
+                <span>Memory</span> <ArrowToggle />
               </h2>
             }
             // open={true}
@@ -72,7 +73,7 @@ export default function NewGameButtons({
             trigger={
               <h2>
                 <Wheel />
-                Harmony <ArrowToggle />
+                <span>Harmony</span> <ArrowToggle />
               </h2>
             }
             lazyRender={true}
@@ -207,7 +208,7 @@ export default function NewGameButtons({
             trigger={
               <h2>
                 <Wheel />
-                Shade <ArrowToggle />
+                <span>Shade</span> <ArrowToggle />
               </h2>
             }
             // open={true}
@@ -285,10 +286,14 @@ export default function NewGameButtons({
         />
         <div>
           <small>
-            Lets you preview the colour. (Score don't contribute to highscores.
-            Doesn't apply to memory games).
+            <p> Lets you preview the colour you're aiming for.</p>
+            <p>
+              (Score don't contribute to highscores. Doesn't apply to memory
+              games).
+            </p>
           </small>
         </div>
+        <Link to={'/faq'}>Read the FAQs</Link>
       </div>
     </div>
   );

@@ -15,9 +15,16 @@
     // height: ;
     overflow: hidden;
   }
-  &:hover {
-    span {
-      width: 10ch;
+}
+
+// ------------------- responsive
+
+@media (hover: hover) {
+  .svg-btn-wrapper {
+    &:hover {
+      span {
+        width: 10ch;
+      }
     }
   }
 }

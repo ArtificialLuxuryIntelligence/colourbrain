@@ -7,7 +7,14 @@
 .App {
   /* text-align: center; */
   background-color: #282c34;
-  color: white;
+  color: $white;
+}
+a {
+  color: $white !important;
+  &:hover {
+    transition: 0.3s;
+    filter: invert(100);
+  }
 }
 
 // ---------------HEADER
@@ -23,6 +30,13 @@
   transition: all 0.8s ease;
 
   font-size: calc(10px + 2vmin);
+
+  a {
+    &:hover {
+      transition: 0.3s;
+      filter: none;
+    }
+  }
 
   h1 {
     margin: 0;
