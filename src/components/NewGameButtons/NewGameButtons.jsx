@@ -215,7 +215,7 @@ export default function NewGameButtons({
             <div className="shade">
               <h3>
                 <Wheel />
-                Colour - Greyscale
+                Colour - Grey
               </h3>
               <div className="btn-cont">
                 <SVGButton
@@ -245,7 +245,7 @@ export default function NewGameButtons({
             <div className="shade">
               <h3>
                 <Wheel />
-                Greyscale - Colour
+                Grey - Colour
               </h3>
               <div className="btn-cont">
                 <SVGButton

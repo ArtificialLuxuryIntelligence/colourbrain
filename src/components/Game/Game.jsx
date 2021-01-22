@@ -65,6 +65,8 @@ export default function Game() {
     TetradHue: 0,
     TetradSL: 0,
     TetradHSL: 0,
+    GSLum: 0,
+    GSLumReverse: 0,
   });
   const timer = useRef();
   const isLoaded = useRef(false);
