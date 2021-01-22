@@ -1,5 +1,4 @@
 import './ColorPicker.scss';
-import tinycolor from 'tinycolor2';
 
 import { RgbColorPicker } from 'react-colorful';
 import 'react-colorful/dist/index.css';
@@ -16,7 +15,6 @@ export default function ColorPicker({
   gridColorsReverse,
 }) {
   const {
-    targetColor,
     color,
     complement,
     grayscale,
@@ -25,7 +23,7 @@ export default function ColorPicker({
     tetrad,
   } = roundColors;
   const { r, g, b } = pickedColor;
-  console.log('color', color);
+  // console.log('color', color);
 
   function renderPickerSwitch(gamemode) {
     switch (gamemode) {
@@ -62,8 +60,6 @@ export default function ColorPicker({
             <Button handleClick={handlePickColor} label="Pick" />
           </>
         );
-
-        break;
     }
   }
 
@@ -79,7 +75,6 @@ export default function ColorPicker({
             key={grayscale}
             className="grayscale-color"
             style={{ backgroundColor: `${grayscale}` }}
-            // style={{ backgroundColor: `${tinycolor(targetColor).toString()}` }}
           ></div>
         )}
 
@@ -88,7 +83,6 @@ export default function ColorPicker({
             key={grayscale}
             className="grayscale-color"
             style={{ backgroundColor: `${color}` }}
-            // style={{ backgroundColor: `${tinycolor(targetColor).toString()}` }}
           ></div>
         )}
 
@@ -139,18 +133,3 @@ export default function ColorPicker({
     </div>
   );
 }
-
-// const colorCombos = (color) => {
-//   const complement = tinycolor(color).complement().toRgbString();
-//   let triad = tinycolor(color)
-//     .triad()
-//     .map((c) => c.toRgbString());
-//   let tetrad = tinycolor(color)
-//     .tetrad()
-//     .map((c) => c.toRgbString());
-
-//   //remove original colors
-//   triad.unshift();
-//   tetrad.unshift();
-//   return { complement, triad, tetrad };
-// };

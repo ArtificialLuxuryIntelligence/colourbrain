@@ -19,15 +19,15 @@ const randomRGBA = (range = [0, 255], a = 1) => {
   };
 };
 
-const randomRGBAGray = (range = [0, 255], a = 1) => {
-  let val = randomInRange(range);
-  return {
-    r: val,
-    g: val,
-    b: val,
-    a,
-  };
-};
+// const randomRGBAGray = (range = [0, 255], a = 1) => {
+//   let val = randomInRange(range);
+//   return {
+//     r: val,
+//     g: val,
+//     b: val,
+//     a,
+//   };
+// };
 
 // returns random rgba object with same saturation and luminosity as input color (different hue)
 const randomRGBA_matchSL = (color) => {

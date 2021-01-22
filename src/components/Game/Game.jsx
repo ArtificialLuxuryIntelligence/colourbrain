@@ -21,13 +21,8 @@ import CompareColors from '../CompareColors/CompareColors';
 import NewGameButtons from '../NewGameButtons/NewGameButtons';
 import Highscores from '../Highscores/Highscores';
 import Collapsible from 'react-collapsible';
-import { Link } from 'react-router-dom';
 
 ///
-// let a = grayscaleColorRange(100);
-let a = shadeColorRange(100, { r: 200, g: 100, b: 40, a: 1 });
-
-console.log('frar', a);
 
 ///
 
@@ -71,7 +66,7 @@ export default function Game() {
   const timer = useRef();
   const isLoaded = useRef(false);
 
-  // Update player colour options when moving to next round (i.e. lock in Hue or Sat/Lum dpending on game mode)
+  // Update player colour picking options when moving to next round (i.e. lock in Hue or Sat/Lum dpending on game mode)
   useEffect(() => {
     if (gameActive) {
       const targetColor = roundColors[round - 1].targetColor;
@@ -170,7 +165,7 @@ export default function Game() {
   };
 
   const handleNextRound = (e) => {
-    console.log('round: ', round);
+    // console.log('round: ', round);
     setRoundStage('preview');
     setRound(round + 1);
   };
@@ -181,14 +176,13 @@ export default function Game() {
   };
 
   const handleRestartGame = (e) => {
-    console.log('restarting...');
+    // console.log('restarting...');
 
-    console.log(gamemode);
+    // console.log(gamemode);
     if (gamemode === 'GSLumReverse') {
-      console.log('restarting with reverse');
+      // console.log('restarting with reverse');
       setRoundColors(generateRounds(totalRounds, true));
     } else {
-      console.log('gsgsg');
       setRoundColors(generateRounds(totalRounds));
       //
     }
@@ -197,7 +191,7 @@ export default function Game() {
   };
 
   const handleBackToStart = (e) => {
-    console.log('back to start');
+    // console.log('back to start');
     setGameActive(false);
     setgamemode(null);
     // clearTimeout(timer.current);
@@ -209,7 +203,7 @@ export default function Game() {
     let mode = e.target.dataset.gamemode;
     setGameActive(true);
     setgamemode(mode);
-    console.log(mode);
+    // console.log(mode);
 
     if (
       userPreferencePreview ||

@@ -38,8 +38,8 @@ export default function Results({
           const { r, g, b } = round.picked;
 
           const score = Math.ceil(calculateScore(round.picked, round.target));
-          console.log(calculateScore(round.picked, round.target));
-          console.log(roundColors[idx]);
+          // console.log(calculateScore(round.picked, round.target));
+          // console.log(roundColors[idx]);
 
           return (
             <li key={idx} className="round-group">
@@ -65,7 +65,7 @@ export default function Results({
 }
 
 function TargetColor({ colors, gamemode }) {
-  console.log(colors);
+  // console.log(colors);
   const targetColor = tinycolor.fromRatio(colors.targetColor).toHexString();
 
   switch (gamemode) {

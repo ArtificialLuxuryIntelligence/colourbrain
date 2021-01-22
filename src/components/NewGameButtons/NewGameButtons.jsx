@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Collapsible from 'react-collapsible';
 
 import './NewGameButtons.scss';
-import Button from '../Button/Button';
 import SVGButton from '../SVGButton/SVGButton';
 import Checkbox from '../Checkbox/Checkbox';
 

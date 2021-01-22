@@ -1,5 +1,4 @@
 import { colorDifference } from './colorTools';
-import tinycolor from 'tinycolor2';
 
 const calculateScore = (c1, c2) => {
 
