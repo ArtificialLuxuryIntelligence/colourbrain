@@ -28,7 +28,7 @@ export default function Nav({ navActive, setNavActive }) {
       </span>
       <ul>
         <li>
-          <Link onClick={handleToggleNav} to="/play">
+          <Link onClick={handleToggleNav} to="/">
             Play
           </Link>
         </li>

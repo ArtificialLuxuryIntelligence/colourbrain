@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Home() {
   return (
     <div>
-      <Link to="/play"> Play</Link>
+      <Link to="/"> Play</Link>
     </div>
   );
 }

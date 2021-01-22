@@ -60,7 +60,7 @@ function App() {
                   <About />
                 </motion.div>
               </Route>
-              <Route key="game" path="/play">
+              <Route key="game" path="/" exact>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -71,7 +71,7 @@ function App() {
                 </motion.div>
               </Route>
 
-              <Route key="home" path="/" exact>
+              {/* <Route key="home" path="/" exact>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -80,7 +80,7 @@ function App() {
                 >
                   <Home />
                 </motion.div>
-              </Route>
+              </Route> */}
             </Switch>
           </AnimatePresence>
         </main>
