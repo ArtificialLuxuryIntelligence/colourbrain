@@ -136,17 +136,12 @@ nav {
 
       &:nth-child(1) {
         // transform: translateX(-$radius);
-        transform: rotate(-5deg) translateX(-$radius) rotate(5deg);
+        transform: rotate(-7deg) translateX(-$radius) rotate(5deg);
         transition-duration: 0.2s;
       }
       &:nth-child(2) {
-        // transition-delay: 0.1s;
+        transition-delay: 0.1s;
         transition-duration: 0.4s;
-
-        // transform: translate(
-        //   calc(-1.414 * 0.5 *#{$radius}),
-        //   calc(1.414 * 0.5 *#{$radius})
-        // );
         transform: rotate(-45deg) translateX(-$radius) rotate(45deg);
       }
       &:nth-child(3) {
@@ -154,7 +149,7 @@ nav {
         transition-duration: 0.47s;
 
         // transform: translateY($radius);
-        transform: rotate(-85deg) translateX(-$radius) rotate(85deg);
+        transform: rotate(-83deg) translateX(-$radius) rotate(85deg);
       }
     }
   }

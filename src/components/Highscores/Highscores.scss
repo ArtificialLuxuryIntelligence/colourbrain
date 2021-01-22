@@ -11,6 +11,9 @@
     margin: 0 auto;
     border-spacing: 1em 1em;
     td {
+      &:nth-child(2) {
+        text-align: right;
+      }
     }
   }
 }
