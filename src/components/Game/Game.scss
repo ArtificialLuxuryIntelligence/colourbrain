@@ -30,14 +30,14 @@
     cursor: pointer;
     // text-align: left;
     h2 {
-      font-size: 2rem;
+      // font-size: 2rem;
       display: flex;
       align-items: center;
       svg {
         transition: ease 0.4s;
         margin: 0 2rem;
         path {
-          fill: hsl(30, 50%, 50%);
+          // fill: hsl(30, 50%, 50%);
         }
         width: 1em;
         height: 1em;
@@ -54,12 +54,47 @@
   }
 }
 
-// .collapsible-memory {
-//   font-size: 3rem;
-// }
-// .collapsible-harmonies {
-//   font-size: 3rem;
-// }
-// .collapsible-highscores {
-//   font-size: 3rem;
-// }
+/// highscores collapsible [many styles already applied in newgamesbuttons.scss]
+
+.new-game {
+  .highscores-collapsible {
+    .Collapsible {
+      .Collapsible__trigger {
+        span {
+          margin-left: 2rem;
+          // text-align: center;
+        }
+        h2 {
+          font-size: 1.2rem;
+        }
+        // &.is-open {
+        //   span {
+        //     flex: 20;
+        //   }
+        //   svg {
+        //     flex: 1;
+        //   }
+        // }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .new-game {
+    .highscores-collapsible {
+      .Collapsible {
+        .Collapsible__trigger {
+          &.is-open {
+            span {
+              flex: 20;
+            }
+            svg {
+              flex: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

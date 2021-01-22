@@ -1,6 +1,7 @@
 @import './../../styles/variables.scss';
 @import './../../styles/animation.scss';
-.new-game-buttons {
+.new-game-buttons,
+.highscores-collapsible {
   padding-top: 2rem;
 
   button {
@@ -152,7 +153,7 @@
       }
     }
   }
-  .shade-col {
+  .shade-grey {
     h3 {
       svg {
         path {
@@ -171,7 +172,7 @@
       }
     }
   }
-  .shade-grey {
+  .shade-col {
     h3 {
       svg {
         path {
@@ -183,7 +184,7 @@
                   (1s * 5/12 * ($x))
                   infinite,
                 fade-in 1s ease ($x) * 50ms forwards;
-              fill: hsl(0, 70, 100 * (($x)/20)+10);
+              fill: hsl(0, 60, 100 * (($x)/20)+10);
             }
           }
         }
@@ -277,7 +278,8 @@
 // ===========================================================================================
 
 @media only screen and (min-width: 800px) {
-  .new-game-buttons {
+  .new-game-buttons,
+  .highscores-collapsible {
     .Collapsible {
       .Collapsible__trigger {
         transition: all 1s ease;
@@ -333,7 +335,8 @@
 }
 
 @media (hover: hover) {
-  .new-game-buttons {
+  .new-game-buttons,
+  .highscores-collapsible {
     .Collapsible {
       .Collapsible__trigger {
         h2 {

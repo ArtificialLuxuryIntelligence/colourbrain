@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import tinycolor from 'tinycolor2';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ReactComponent as Wheel } from './../../assets/Group_3.svg';
+import { ReactComponent as ArrowToggle } from './../../assets/arrowToggle.svg';
 
 import {
   randomRGBA,
@@ -21,6 +23,7 @@ import CompareColors from '../CompareColors/CompareColors';
 import NewGameButtons from '../NewGameButtons/NewGameButtons';
 import Highscores from '../Highscores/Highscores';
 import Collapsible from 'react-collapsible';
+// import { ReactComponent as Wheel } from './../../assets/Group_3.svg';
 
 ///
 
@@ -270,15 +273,20 @@ export default function Game() {
               handleToggleUserPrefPreview={handleToggleUserPrefPreview}
               userPreferencePreview={userPreferencePreview}
             />
-
-            <Collapsible
-              key={'collapsible'}
-              triggerClassName="collapsible-highscores"
-              triggerOpenClassName="collapsible-highscores"
-              trigger="Highscores"
-            >
-              <Highscores highscores={highscores} />
-            </Collapsible>
+            <div className="highscores-collapsible">
+              <Collapsible
+                key={'collapsible'}
+                triggerClassName="collapsible-highscores"
+                triggerOpenClassName="collapsible-highscores"
+                trigger={
+                  <h2>
+                    <span>My Highscores</span> <ArrowToggle />
+                  </h2>
+                }
+              >
+                <Highscores highscores={highscores} />
+              </Collapsible>
+            </div>
           </motion.div>
         )}
 
