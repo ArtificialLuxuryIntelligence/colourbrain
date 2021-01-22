@@ -19,6 +19,16 @@ const randomRGBA = (range = [0, 255], a = 1) => {
   };
 };
 
+const randomRGBAGray = (range = [0, 255], a = 1) => {
+  let val = randomInRange(range);
+  return {
+    r: val,
+    g: val,
+    b: val,
+    a,
+  };
+};
+
 // returns random rgba object with same saturation and luminosity as input color (different hue)
 const randomRGBA_matchSL = (color) => {
   let hsl = tinycolor.fromRatio(color).toHsl();
@@ -39,6 +49,18 @@ const randomRGBA_matchH = (color) => {
   return rgb;
 };
 
+const randomRGBA_matchHS = (color) => {
+  let hsl = tinycolor.fromRatio(color).toHsl();
+  // let lum = Math.random();
+  // hsl.l = lum;
+
+  let lum = Math.random();
+  hsl.l = lum;
+
+  let rgb = tinycolor(hsl).toRgb();
+  return rgb;
+};
+
 const colorCombos = (color) => {
   const complement = tinycolor(color).complement().toRgbString();
 
@@ -48,6 +70,8 @@ const colorCombos = (color) => {
   //   .map((c) => c.toRgbString());
 
   // console.log('SCOMP', splitComplement, color);
+
+  let grayscale = tinycolor(color).greyscale().toRgbString();
 
   let splitComplement = splitComp(color);
 
@@ -63,6 +87,7 @@ const colorCombos = (color) => {
   tetrad.shift();
   return {
     target: tinycolor(color).toRgbString(),
+    grayscale,
     complement,
     splitComplement,
     triad,
@@ -83,17 +108,34 @@ const splitComp = (color) => {
   ];
 };
 
-const generateRounds = (rounds) => {
+const generateRounds = (rounds, grayScale = false) => {
   let res = [];
   let r = 0;
   while (r < rounds) {
-    const targetColor = randomRGBA([25, 230]);
+    let targetColor;
+    if (!grayScale) {
+      targetColor = randomRGBA([25, 230]);
+    } else {
+      targetColor = randomRGBAGray([25, 230]);
+    }
 
-    const { complement, splitComplement, triad, tetrad } = colorCombos(
-      targetColor
-    );
+    const {
+      grayscale,
+      complement,
+      splitComplement,
+      triad,
+      tetrad,
+    } = colorCombos(targetColor);
 
-    res.push({ targetColor, complement, splitComplement, triad, tetrad });
+    res.push({
+      targetColor,
+      grayscale,
+      complement,
+      splitComplement,
+      triad,
+      tetrad,
+      grayscale,
+    });
     r++;
   }
   return res;
@@ -103,6 +145,7 @@ export {
   colorDifference,
   randomRGBA,
   randomRGBA_matchH,
+  randomRGBA_matchHS,
   randomRGBA_matchSL,
   colorCombos,
   generateRounds,

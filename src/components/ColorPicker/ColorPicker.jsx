@@ -1,6 +1,6 @@
 import './ColorPicker.scss';
 
-import { RgbColorPicker} from 'react-colorful';
+import { RgbColorPicker } from 'react-colorful';
 import 'react-colorful/dist/index.css';
 import Button from './../Button/Button';
 
@@ -11,8 +11,9 @@ export default function ColorPicker({
   gamemode,
   roundColors,
 }) {
-  const { complement, splitComplement, triad, tetrad } = roundColors;
+  const { complement, grayscale, splitComplement, triad, tetrad } = roundColors;
   const { r, g, b } = pickedColor;
+  console.log(gamemode);
 
   return (
     <div
@@ -20,6 +21,14 @@ export default function ColorPicker({
       style={{ backgroundColor: `rgb(${r},${g},${b})` }}
     >
       <div className="reference-colors">
+        {gamemode === 'GSLum' && (
+          <div
+            key={grayscale}
+            className="grayscale-color"
+            style={{ backgroundColor: `${grayscale}` }}
+          ></div>
+        )}
+
         {(gamemode === 'CompHue' ||
           gamemode === 'CompSL' ||
           gamemode === 'CompHSL') && (

@@ -64,6 +64,7 @@ export default function NewGameButtons({
             </div>
           </Collapsible>
         </li>
+
         <li>
           <Collapsible
             triggerClassName="collapsible-harmonies"
@@ -194,6 +195,80 @@ export default function NewGameButtons({
                   Icon={Ax3}
                   handleClick={handleSelectMode}
                 />
+              </div>
+            </div>
+          </Collapsible>
+        </li>
+        <li>
+          <Collapsible
+            triggerClassName="collapsible-shade"
+            triggerOpenedClassName="collapsible-shade"
+            lazyRender={true}
+            trigger={
+              <h2>
+                <Wheel />
+                Shade <ArrowToggle />
+              </h2>
+            }
+            // open={true}
+          >
+            <div className="shade">
+              <h3>
+                <Wheel />
+                Colour - Greyscale
+              </h3>
+              <div className="btn-cont">
+                <SVGButton
+                  dataKey="gamemode"
+                  label="Luminance"
+                  Icon={Ax1}
+                  data="GSLum"
+                  handleClick={handleSelectMode}
+                />
+                {/* <SVGButton
+                  dataKey="gamemode"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  data="SatLum"
+                  handleClick={handleSelectMode}
+                /> */}
+                {/* <SVGButton
+                  dataKey="gamemode"
+                  data="HSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                /> */}
+              </div>
+            </div>
+
+            <div className="shade">
+              <h3>
+                <Wheel />
+                Greyscale - Colour
+              </h3>
+              <div className="btn-cont">
+                {/* <SVGButton
+                  dataKey="gamemode"
+                  label="Luminance"
+                  Icon={Ax1}
+                  data="GSHue"
+                  handleClick={handleSelectMode}
+                /> */}
+                {/* <SVGButton
+                  dataKey="gamemode"
+                  label={'Saturation Luminance'}
+                  Icon={Ax2}
+                  data="SatLum"
+                  handleClick={handleSelectMode}
+                /> */}
+                {/* <SVGButton
+                  dataKey="gamemode"
+                  data="HSL"
+                  label={'Hue Saturation Luminance'}
+                  Icon={Ax3}
+                  handleClick={handleSelectMode}
+                /> */}
               </div>
             </div>
           </Collapsible>

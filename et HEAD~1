@@ -1,0 +1,203 @@
+[33mcommit acf14e73dd9fa91b5ad290f26cd4b9ec4a709901[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Fri Jan 22 01:21:16 2021 +0000
+
+    added modes but picker does allow for only shading...
+
+[33mcommit e40a19d0f7197b3f30c0d0e4fc62c727fefb128a[m[33m ([m[1;32mshademode[m[33m)[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Fri Jan 22 00:03:21 2021 +0000
+
+    nav timing tweak
+
+[33mcommit 255dfb64a9188960aee7bcfffdc5113224593cdf[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 23:54:49 2021 +0000
+
+    nav and header styling
+
+[33mcommit 97a589de0f7d2c67ea964aa4a0ef7a3844f578d1[m[33m ([m[1;32mcollapsible-style[m[33m)[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 23:08:11 2021 +0000
+
+    collapsible + buttons in it -- styling
+
+[33mcommit bfcfef60470d99be95c55d7606c45b9cd17c5e2d[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 20:51:09 2021 +0000
+
+    svg buttons
+
+[33mcommit 60fc5484660845622f1f39a22a35856e874471a4[m[33m ([m[1;32mmenu[m[33m)[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 19:41:24 2021 +0000
+
+    nav fixes
+
+[33mcommit 20ebc448cc9a6280c3c1c382aa6ccb202ffac521[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 17:33:13 2021 +0000
+
+    checkbox styling?
+
+[33mcommit 2997097be389df7283cf76c0dea54e725e8028e9[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 17:23:08 2021 +0000
+
+    memomry svg wheel styling
+
+[33mcommit 76aee5611f14b40e1eb6760e0d01be73c09fc1e4[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 16:55:17 2021 +0000
+
+    collapsible styling
+
+[33mcommit 707b5737dbf1026f3242eab9845a0476eb3a5155[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 14:26:45 2021 +0000
+
+    page animations added
+
+[33mcommit 09429617308a462eee176b4aa77a053ee898b371[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Thu Jan 21 01:17:10 2021 +0000
+
+    react collapsible + harmony svg animations
+
+[33mcommit a6e9c53598e9bf51e7e502db5bb07562daeef62e[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 17:49:00 2021 +0000
+
+    increase to 5 rounds
+
+[33mcommit 13ba2d6349078e13fff3820f670702d634fd538b[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 17:20:03 2021 +0000
+
+    responsive styling for bubbles
+
+[33mcommit ed9ce7330e54577f0d56ada7a05dcb44e52e754b[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 16:12:11 2021 +0000
+
+    outside click hook to close nav on outside click
+
+[33mcommit bdfa48e0f63fc46c1cc6a606b7ecc490d2448339[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 15:46:02 2021 +0000
+
+    ? eslint cache
+
+[33mcommit dd84367671fb7c522fde507385a65f60018b7c24[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 15:43:36 2021 +0000
+
+    name animation and color fixes
+
+[33mcommit e13d5b13f09ce920324d880d5b2e12f00430cc05[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 13:35:49 2021 +0000
+
+    router and nav
+
+[33mcommit 667f81b706e0f0f88ca7bdab68f1d543baeb25e0[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Wed Jan 20 11:58:54 2021 +0000
+
+    colour circle animation
+
+[33mcommit 59ea03c537332627c98ad4bb22a835d69f53c795[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 23:19:31 2021 +0000
+
+    button styling (provisional)
+
+[33mcommit c62b34fbceaaf93dd7fe3acaea1bace1d86f60dc[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 22:56:42 2021 +0000
+
+    refactoring
+
+[33mcommit 0887d55d5b93001c97cf07273d0f076c1afcd1d7[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 22:56:16 2021 +0000
+
+    animated counted unmount fix
+
+[33mcommit c6c95c8f8a9d48cb7d21e7912f2e23ebf917ab82[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 21:20:40 2021 +0000
+
+    compare colour animations added
+
+[33mcommit 7566efd11cf54b06abb1e440d50bd18362b56e29[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 20:25:46 2021 +0000
+
+    styling
+
+[33mcommit 6327c8fa8f21bbdc8b7c00a140559ac94c39a61a[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 18:34:08 2021 +0000
+
+    custom split-complement function
+
+[33mcommit 2829ec33d860d46e0ca75fcab381b101c64d8672[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 18:33:06 2021 +0000
+
+    Game modes given readable names via map
+
+[33mcommit 9e97bd1f0da1fd308766f7f0fb419ecbf0b31586[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 16:59:33 2021 +0000
+
+    added split-complementart colours gamde mode
+
+[33mcommit 667b3945600a1b5c3b0dc3514260fb3b4dce1b79[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 16:27:42 2021 +0000
+
+    highscores only update when not in preview mode
+
+[33mcommit 277083812128783bf5dff28d2fb251ebe2326aa7[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 14:48:57 2021 +0000
+
+    minor styling and refactoring
+
+[33mcommit 66e8a4d77f4845d7e5ab6f518913c0bd5c40f103[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 00:39:40 2021 +0000
+
+    named API source
+
+[33mcommit d4ed0098900b249d384bbd0b465f8579af7eb358[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Tue Jan 19 00:35:44 2021 +0000
+
+    add color name API to name colours
+
+[33mcommit 451c1115351ed00603b921fe415e95102a72965c[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Mon Jan 18 23:33:00 2021 +0000
+
+    minor fixes and styling
+
+[33mcommit 089493fa18ed67ba909cef5f1dcc7b5f63d6747c[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Mon Jan 18 20:48:03 2021 +0000
+
+    multiple gameplay modes now available
+
+[33mcommit bde420d18d0645f60927033c42ae3745518a63a7[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Mon Jan 18 00:21:18 2021 +0000
+
+    init working game
+
+[33mcommit f65ae84f95eb4561b5c412231c61b01e80164af1[m
+Author: Ali <adgk.dev@gmail.com>
+Date:   Sun Jan 17 16:18:55 2021 +0000
+
+    Initialize project using Create React App

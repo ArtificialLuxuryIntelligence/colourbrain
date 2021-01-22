@@ -6,6 +6,7 @@ import {
   randomRGBA,
   randomRGBA_matchH,
   randomRGBA_matchSL,
+  randomRGBA_matchHS,
   generateRounds,
 } from './../../tools/colorTools';
 import './Game.scss';
@@ -34,7 +35,7 @@ export default function Game() {
   // stages: new, preview, pick, compare, results
   const [roundStage, setRoundStage] = useState('new');
   // game modes: Hue, SatLum, HSL
-  const [gamemode, setgamemode] = useState('Hue');
+  const [gamemode, setgamemode] = useState(null);
   const [preview, setPreview] = useState(true);
   const [userPreferencePreview, setuserPreferencePreview] = useState(false);
   const [gameActive, setGameActive] = useState(false);
@@ -77,6 +78,14 @@ export default function Game() {
         case 'TetradSL':
           setPickedColor(randomRGBA_matchH(targetColor));
           break;
+        case 'GSLum':
+          console.log(targetColor);
+          let p = randomRGBA_matchHS(targetColor);
+          console.log(p);
+          setPickedColor(p);
+
+          break;
+
         // All HSL options get a random colour
         default:
           setPickedColor(randomRGBA([20, 235]));
@@ -93,6 +102,12 @@ export default function Game() {
     }
   }, [round]);
 
+  useEffect(() => {
+    isLoaded.current && handleRestartGame();
+    return () => {
+      // cleanup;
+    };
+  }, [gamemode]);
   // Get highscores from local storage
   useEffect(() => {
     const data = localStorage.getItem('highscores');
@@ -152,7 +167,15 @@ export default function Game() {
   const handleRestartGame = (e) => {
     console.log('restarting...');
     setGameActive(true);
+    console.log(gamemode);
+    // if (gamemode === 'GSLum') {
+    // console.log('gsgsg');
+    // setRoundColors(generateRounds(totalRounds, true));
+    // } else {
+    // console.log('gsgsg');
+
     setRoundColors(generateRounds(totalRounds));
+    // }
     setRound(1);
     setResults([]);
   };
@@ -160,6 +183,7 @@ export default function Game() {
   const handleBackToStart = (e) => {
     console.log('back to start');
     setGameActive(false);
+    
     // clearTimeout(timer.current);
     setRoundStage('new');
     setRound(totalRounds);
@@ -167,8 +191,8 @@ export default function Game() {
 
   const handleSelectMode = (e) => {
     let mode = e.target.dataset.gamemode;
-    console.log(mode);
     setgamemode(mode);
+    console.log(mode);
 
     if (
       userPreferencePreview ||
@@ -180,7 +204,7 @@ export default function Game() {
     } else {
       setPreview(false);
     }
-    handleRestartGame();
+    // handleRestartGame();
   };
 
   const handleToggleUserPrefPreview = (e) => {

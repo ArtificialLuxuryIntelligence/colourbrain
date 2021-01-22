@@ -13,32 +13,36 @@
     > div {
       margin: 1em;
     }
-    .complement-color {
-      // border: 1px solid black;
-      width: 50px;
-      height: 50px;
-    }
-    .split-complement-color {
-      // border: 1px solid black;
-      width: 50px;
-      height: 50px;
-    }
+    // .complement-color {
+    //   // border: 1px solid black;
+    //   width: 50px;
+    //   height: 50px;
+    // }
+    // .split-complement-color {
+    //   // border: 1px solid black;
+    //   width: 50px;
+    //   height: 50px;
+    // }
 
-    .triad-color {
-      // border: 1px solid black;
-      width: 50px;
-      height: 50px;
-    }
-    .tetra-color {
-      // border: 1px solid black;
-      width: 50px;
-      height: 50px;
-    }
+    // .triad-color {
+    //   // border: 1px solid black;
+    //   width: 50px;
+    //   height: 50px;
+    // }
+    // .tetra-color {
+    //   // border: 1px solid black;
+    //   width: 50px;
+    //   height: 50px;
+    // }
+
+    .grayscale-color,
     .complement-color,
     .split-complement-color,
     .triad-color,
     .tetra-color {
       border-radius: 50%;
+      width: 50px;
+      height: 50px;
     }
   }
 
@@ -77,6 +81,20 @@
 .gamemode-SCompSL,
 .gamemode-TriadSL,
 .gamemode-TetradSL {
+  .react-colorful {
+    width: 80vw;
+    max-width: 600px;
+    .react-colorful__hue {
+      display: none;
+    }
+    .react-colorful__saturation {
+      border-bottom: none;
+      border-radius: 8px;
+    }
+  }
+}
+
+.gamemode-GSLum {
   .react-colorful {
     width: 80vw;
     max-width: 600px;
