@@ -28,7 +28,7 @@ import Collapsible from 'react-collapsible';
 
 //must have minimum 2 rounds
 // make these a user adjustable settings option on homepage
-const totalRounds = 2;
+const totalRounds = 5;
 const flashTime = 2200; // take into account animation length of previous page unmount
 
 export default function Game() {
