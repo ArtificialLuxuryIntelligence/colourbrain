@@ -162,7 +162,7 @@
   .Collapsible {
     margin: 0 auto 2rem;
     width: 800px;
-    max-width: 90vw; // padding: 1rem;
+    max-width: 80vw; // padding: 1rem;
     // text-align: center;
     .Collapsible__trigger {
       // font-size: 2rem;
@@ -178,6 +178,10 @@
       svg {
         path {
           fill: white;
+        }
+        &:nth-child(2) {
+          margin-left: auto;
+          // margin-right: ;
         }
       }
     }
