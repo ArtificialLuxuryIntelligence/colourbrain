@@ -205,6 +205,7 @@ export default function NewGameButtons({
             triggerClassName="collapsible-shade"
             triggerOpenedClassName="collapsible-shade"
             lazyRender={true}
+            // open={true}
             trigger={
               <h2>
                 <Wheel />
@@ -213,7 +214,7 @@ export default function NewGameButtons({
             }
             // open={true}
           >
-            <div className="shade">
+            <div className="shade-col">
               <h3>
                 <Wheel />
                 Colour - Grey
@@ -243,7 +244,7 @@ export default function NewGameButtons({
               </div>
             </div>
 
-            <div className="shade">
+            <div className="shade-grey">
               <h3>
                 <Wheel />
                 Grey - Colour
